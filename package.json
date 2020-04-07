@@ -1,0 +1,40 @@
+{
+  "name": "react-mycroft-gui",
+  "version": "1.0.0",
+  "description": "react based front-end for mycroft",
+  "main": "index.js",
+  "scripts": {
+    "test": "test-app",
+    "start": "webpack-dev-server --hot --open",
+    "build": "cross-env NODE_ENV=development webpack --config webpack.config.js"
+  },
+  "keywords": [
+    "mycroft"
+  ],
+  "author": "Vangrel",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^4.0.4",
+    "http-server": "^0.12.1",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexisdiaz008/react-mycroft-gui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alexisdiaz008/react-mycroft-gui/issues"
+  },
+  "homepage": "https://github.com/alexisdiaz008/react-mycroft-gui#readme"
+}
