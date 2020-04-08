@@ -4,7 +4,7 @@ body {
 
 .App {
   text-align: center;
-  background: rgb(9, 26, 40) none repeat scroll 0% 0%;
+  background: #000000;
   height: 60rem;
   width: 100%;
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import restingFace from '../assets/restingfaceplaceholder.gif';
+import restingFace from '../assets/ai-loader-opt.gif';
 import './face.css';
 
 class Face extends Component {
