@@ -31,10 +31,19 @@ export default class SkillComponentHandler extends Component {
 		}
 	}
 
+	handleFade(element, duration) {
+		setTimeout(() => {
+			const element = document.querySelector('.skill-container')
+			element.classList.remove("fade-in")
+			element.classList.add("fade-out")
+		}, duration)
+	}
+
 	render() {
 		// console.log(this.props)
+		{this.handleFade('.skill-container', 5000)}
 		return (
-			<div className="skill-container">
+			<div className="skill-container fade-in">
 				{this.returnActiveSkillComponent()}
 			</div>
 		)

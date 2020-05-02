@@ -1,5 +1,66 @@
+$base-color: #2828288f;
+$default-opacity: 1;
+$default-transition-speed: 3s;
+
 .skill-container {
 	max-width: 480px;
 	position: fixed;
 	top: 0;
+	padding: 45% 0;
+
+	div {
+		padding: 1% 2%;
+		background: $base-color;
+	}
+	img {
+		max-width:100%;
+	}
 }
+
+.fade-in {
+    -moz-animation-name: fadeIn;
+    -webkit-animation-name: fadeIn;
+    -ms-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -moz-animation-duration: $default-transition-speed;
+    -webkit-animation-duration: $default-transition-speed;
+    -ms-animation-duration: $default-transition-speed;
+    animation-duration: $default-transition-speed;
+    -moz-animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -ms-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -moz-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;  
+  }
+  
+  .fade-out {
+    -moz-animation-name: fadeOut;
+    -webkit-animation-name: fadeOut;
+    -ms-animation-name: fadeOut;
+    animation-name: fadeOut;
+    -moz-animation-duration: $default-transition-speed;
+    -webkit-animation-duration: $default-transition-speed;
+    -ms-animation-duration: $default-transition-speed;
+    animation-duration: $default-transition-speed;
+    -moz-animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -ms-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -moz-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;  
+  }
+  
+  @-moz-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+  @-webkit-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+  @-ms-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+  @-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+
+  @-moz-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
+  @-webkit-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
+  @-ms-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; }} 
+  @-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden;  }} 

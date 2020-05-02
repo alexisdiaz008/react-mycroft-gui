@@ -6,7 +6,7 @@ export default function SystemImageFrame(props) {
 		<div>
 			<h3>{props.title}</h3>
 			<img src={props.image}></img>
-			<p>{props.caption}</p>
+			<h5>{props.caption}</h5>
 		</div>
 	)
 }
