@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class MycroftDateTime extends React.Component {
+export default class MycroftDateTime extends React.Component {
 	constructor(props) {
 		super(props)
 	}

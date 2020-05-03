@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './default.scss'
 import GuiExamplesAiix from './skill_components/gui_examples_aiix'
-// import MycroftDateTime from './skill_components/mycroft_date_time'
+import MycroftDateTime from './skill_components/mycroft_date_time'
+import MycroftWiki from './skill_components/mycroft_wiki'
 
 export default class SkillComponentHandler extends Component {
 	constructor(props) {
@@ -9,24 +10,35 @@ export default class SkillComponentHandler extends Component {
 	}
 
 	returnActiveSkillComponent() {
-		const activeSkill = this.props.activeSkill
-		const skillState = this.props.skillState
-	
-		switch (activeSkill) {
+		const active_skill = this.props.activeSkill
+		const skill_state = this.props.skillState
+  	const component_focus = skill_state['component_focus']
+		const component_name = skill_state['components'][component_focus]
+		console.log(skill_state)
+		switch (active_skill) {
   		case "gui-examples.aiix":
-  			return(
+  			return (
   				<GuiExamplesAiix
-  					skillState = {skillState}
+  					skillState = {skill_state}
+  					componentName = {component_name}
   				/>
 				)
 		  case "mycroft-date-time.mycroftai":
-		  	return(
+		  	return (
 		  		<MycroftDateTime
-		  			skillState = {skillState}
+		  			skillState = {skill_state}
+		  			componentName = {component_name}
 		  		/>
 	  		)
+  		case "mycroft-wiki.mycroftai":
+  			return (
+  				<MycroftWiki
+		  			skillState = {skill_state}
+		  			componentName = {component_name}
+  				/>
+				)
 		  default:
-	      console.log("Unhandled component for: " + activeSkill)
+	      console.log("Unhandled component for: " + active_skill)
 	      break
 		}
 	}
@@ -41,7 +53,7 @@ export default class SkillComponentHandler extends Component {
 
 	render() {
 		// console.log(this.props)
-		{this.handleFade('.skill-container', 5000)}
+		{this.handleFade('.skill-container', 8000)}
 		return (
 			<div className="skill-container fade-in">
 				{this.returnActiveSkillComponent()}

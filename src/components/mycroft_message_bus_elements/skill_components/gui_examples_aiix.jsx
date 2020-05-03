@@ -9,9 +9,7 @@ export default class GuiExamplesAiix extends React.Component {
 
 	returnComponent() {
   	const skill_props = this.props.skillState
-  	const component_focus = skill_props['component_focus']
-		const component_name = skill_props['components'][component_focus]
-		console.log(skill_props)
+		const component_name = this.props.componentName
 		switch (component_name) {
 			case "SYSTEM_TextFrame":
 				return (
