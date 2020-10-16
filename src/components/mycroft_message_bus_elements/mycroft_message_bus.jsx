@@ -124,12 +124,10 @@ export default class MycroftMessageBus extends Component {
 				if (active_skill_state_focus >= 1 || active_skill_state_focus == 0) {
 					// console.log("COMPONENT FOCUS:\n" + (JSON.stringify(active_skill_state_focus )))
 					return (
-						<div>
-							<SkillComponentHandler
-								activeSkill={active_skill}
-								skillState={active_skill_state}
-							/>
-						</div>
+						<SkillComponentHandler
+							activeSkill={active_skill}
+							skillState={active_skill_state}
+						/>
 					)
 				} else {
 					return (null)

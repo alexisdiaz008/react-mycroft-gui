@@ -7,7 +7,7 @@ export default class GuiExamplesAiix extends React.Component {
 		super(props)
 	}
 
-	returnComponent() {
+  render() {
   	const skill_props = this.props.skillState
 		const component_name = this.props.componentName
 		switch (component_name) {
@@ -29,13 +29,5 @@ export default class GuiExamplesAiix extends React.Component {
 	      console.log("Unhandled component for: " + component_name)
 	      break
 		}
-	}
-
-  render() {
-    return (
-	  	<div>
-	  		{this.returnComponent()}
-	  	</div>
-  	)
   }
 }
