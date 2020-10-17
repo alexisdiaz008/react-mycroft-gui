@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
-import SystemTextFrame from '../core_components/system_text_frame'
-import SystemImageFrame from '../core_components/system_image_frame'
+// import SystemTextFrame from '../core_components/system_text_frame'
+
+function SystemImageFrame(props) {
+	// console.log(props)
+	return (
+		<div>
+			<h3>{props.title}</h3>
+			<img src={props.image}></img>
+			<h5>{props.caption}</h5>
+		</div>
+	)
+}
+
+function SystemTextFrame(props) {
+	console.log(props)
+	return (
+		<h5>{props.text}</h5>
+	)
+}
 
 export default class GuiExamplesAiix extends React.Component {
 	constructor(props) {
