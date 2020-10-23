@@ -13,15 +13,17 @@ export default function MediaFrame(props) {
 					return (
 						<video 
 							id="video_player"
-							onLoadedMetadata={(e) => {handleFade('.skill-container', e.target.duration)}} 
+							onLoadedMetadata={(e) => {handleFade('.skill-container', (e.target.duration*1000))}} 
 							autoPlay={true}>
 							<source src={mediaString} type="video/webm" />
 						</video>
 					)
 			default:
 					return (
-						//{//handleFade('.skill-container', 8000)}
-						<img src={mediaString}></img>
+						<img 
+							src={mediaString}
+							onLoad={(e) => {handleFade('.skill-container', 8000)}}>
+						</img>
 					)
 			  break
 			}

@@ -4,5 +4,5 @@ export const handleFade = (targetSelector, duration) => {
 		setTimeout(() => {
 			target.classList.remove("fade-in")
 			target.classList.add("fade-out")
-		}, (duration*1000))
+		}, (duration))
 	}
