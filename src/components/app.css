@@ -1,31 +1,9 @@
 body {
-  font-family: "Courier New", Courier, monospace;
-  margin:0px;
-  background:none;
+	background-color: black;
 }
 
 .App {
-  text-align: center;
-  background: #000000;
-  height: 800px;
-  width: 480px;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+	height: 100%;
+	/*padding: 14rem 0;
+  width: 100%;*/
+} 

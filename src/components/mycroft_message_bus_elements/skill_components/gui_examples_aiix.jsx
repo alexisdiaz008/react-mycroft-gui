@@ -1,28 +1,35 @@
 import React, { Component } from 'react';
 // import SystemTextFrame from '../core_components/system_text_frame'
 
-function SystemImageFrame(props) {
+function ImageFrame(props) {
 	// console.log(props)
 	return (
 		<div>
-			<h3>{props.title}</h3>
+			<TextFrame
+				className="h2"
+				text={props.title}
+			/>
 			<img src={props.image}></img>
-			<h5>{props.caption}</h5>
+			<TextFrame
+				className="h4"
+				text={props.caption}
+			/>
 		</div>
 	)
 }
 
-function SystemTextFrame(props) {
-	console.log(props)
+function TextFrame(props) {
 	return (
-		<h5>{props.text}</h5>
+		<p className={props.className}>
+			{props.text}
+		</p>
 	)
 }
 
 export default class GuiExamplesAiix extends React.Component {
 	constructor(props) {
 		super(props)
-	}
+	} 
 
   render() {
   	const skill_props = this.props.skillState
@@ -30,13 +37,14 @@ export default class GuiExamplesAiix extends React.Component {
 		switch (component_name) {
 			case "SYSTEM_TextFrame":
 				return (
-					<SystemTextFrame
+					<TextFrame
+						className="h5"
 						text={(skill_props['text'] || null )}
 					/>
 				)
 			case "SYSTEM_ImageFrame":
 				return (
-					<SystemImageFrame
+					<ImageFrame
 						title={(skill_props['title'] || null )}
 						image={(skill_props['image'] || null )}
 						caption={(skill_props['caption'] || null )}

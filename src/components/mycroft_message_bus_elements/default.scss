@@ -2,6 +2,19 @@ $base-color: #2828288f;
 $default-opacity: 1;
 $default-transition-speed: 3s;
 
+.skill-container {
+	position: fixed;
+	top: 0;
+  padding: 8rem 0;
+
+	img, video {
+		max-width:100%;
+	}
+  p {
+    padding: 3rem 0;
+    text-align:center;
+  }
+}
 
 .fade-in {
     -moz-animation-name: fadeIn;

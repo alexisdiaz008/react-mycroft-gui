@@ -17,7 +17,11 @@ export default class Face extends Component {
 
 	render() {
 		return (
-			<img src={restingFace} className="face" alt="logo" />
+			<img
+				src={restingFace}
+				className="face row"
+				alt="logo"
+			/>
 		);
 	}
 }
