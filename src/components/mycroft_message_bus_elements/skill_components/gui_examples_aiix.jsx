@@ -1,30 +1,6 @@
 import React, { Component } from 'react';
-// import SystemTextFrame from '../core_components/system_text_frame'
-
-function ImageFrame(props) {
-	// console.log(props)
-	return (
-		<div>
-			<TextFrame
-				className="h2"
-				text={props.title}
-			/>
-			<img src={props.image}></img>
-			<TextFrame
-				className="h4"
-				text={props.caption}
-			/>
-		</div>
-	)
-}
-
-function TextFrame(props) {
-	return (
-		<p className={props.className}>
-			{props.text}
-		</p>
-	)
-}
+import { TextFrame } from '../core_components/utils'
+import { ImageFrame } from '../core_components/utils'
 
 export default class GuiExamplesAiix extends React.Component {
 	constructor(props) {
@@ -38,7 +14,7 @@ export default class GuiExamplesAiix extends React.Component {
 			case "SYSTEM_TextFrame":
 				return (
 					<TextFrame
-						className="h5"
+						className="col h5"
 						text={(skill_props['text'] || null )}
 					/>
 				)

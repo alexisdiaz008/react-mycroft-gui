@@ -18,7 +18,7 @@ export default class MycroftWiki extends React.Component {
 						<MediaFrame
 							mediaString={skill_props.imgLink}
 						/>
-						<h5>{skill_props.summary}</h5>
+						<p>{skill_props.summary}</p>
 					</div>
 				)
 		  default:
