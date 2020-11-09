@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TextFrame } from '../core_components/utils'
 
 export default class MycroftDateTime extends React.Component {
 	constructor(props) {
@@ -6,10 +7,22 @@ export default class MycroftDateTime extends React.Component {
 	}
 
   render() {
+  	const skill_props = this.props.skillState
+  	console.log("the time is "+ skill_props.time_string)
+
     return (
-	  	<div>
-	    	{console.log("the time is "+ this.props.skillState['time_string'])}
-	  	</div>
+    	<div className="col-12 text-center">
+	    	<TextFrame
+					id={"dateString"}
+					className={"h4"}
+					text={skill_props.date_string}
+				/>
+	    	<TextFrame
+					id={"timeString"}
+					className={"h1"}
+					text={skill_props.time_string}
+				/>
+			</div>
   	)
   }
 }

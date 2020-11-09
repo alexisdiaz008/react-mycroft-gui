@@ -1,6 +1,6 @@
 $base-color: #2828288f;
 $default-opacity: 1;
-$default-transition-speed: 3s;
+$default-transition-speed: .5s;
 
 .skill-container {
   width: 100%;
@@ -9,12 +9,34 @@ $default-transition-speed: 3s;
   padding: 8rem 0;
 
 	img, video {
+    width: 100%;
 		max-width:100%;
 	}
   p {
+    opacity: 0;
     padding: 3rem 0;
     text-align:center;
   }
+}
+/*
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #008CBA;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease;
+}
+
+.container:hover .overlay {
+  width: 100%;
+}*/
+
+.mediaFrameImg, .mediaFrameVideo {
+  opacity: 0;
 }
 
 .fade-in {

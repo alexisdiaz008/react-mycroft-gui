@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useCallback} from 'react';
-import MediaFrame from '../core_components/media_frame'
+import MediaFrame from '../core_components/utils'
+import { TextFrame } from '../core_components/utils'
 
 export default class MycroftWiki extends React.Component {
 
@@ -16,9 +17,14 @@ export default class MycroftWiki extends React.Component {
 				return (
 					<div>
 						<MediaFrame
+							id={"imgLink"}
 							mediaString={skill_props.imgLink}
 						/>
-						<p>{skill_props.summary}</p>
+						<TextFrame
+							id={"summary"}
+							className={"h4 text-left px-3"}
+							text={skill_props.summary}
+						/>
 					</div>
 				)
 		  default:

@@ -23,11 +23,22 @@ export default class GuiExamplesAiix extends React.Component {
 				)
 			case "SYSTEM_ImageFrame":
 				return (
-					<ImageFrame
-						title={(skill_props['title'] || null )}
-						image={(skill_props['image'] || null )}
-						caption={(skill_props['caption'] || null )}
-					/>
+					<div>
+						<TextFrame
+							id="title"
+							className="h2"
+							text={(skill_props['title'] || null )}
+						/>
+						<ImageFrame
+							id={"image"}
+						  src={(skill_props['image'] || null )}
+						/>
+						<TextFrame
+							id="caption"
+							className="h4"
+							text={(skill_props['caption'] || null )}
+						/>
+					</div>
 				)
 		  default:
 	      console.log("Unhandled component for: " + component_name)

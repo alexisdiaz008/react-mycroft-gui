@@ -45,7 +45,7 @@ export default class SkillComponentHandler extends Component {
 
 	render() {
 		return (
-			<div className="skill-container row fade-in">
+			<div className="skill-container row">
 				{this.returnActiveSkillComponent()}
 			</div>
 		)
