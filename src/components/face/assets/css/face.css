@@ -1,5 +1,7 @@
 .face {
 	width: 100%;
-	position: fixed;
-	padding: 50% 0;
+	max-width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 }
