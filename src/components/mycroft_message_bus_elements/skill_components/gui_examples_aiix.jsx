@@ -17,6 +17,7 @@ export default class GuiExamplesAiix extends React.Component {
 			case "SYSTEM_TextFrame":
 				return (
 					<TextFrame
+						id={"text"}
 						className="col h5"
 						text={(skill_props['text'] || null )}
 					/>

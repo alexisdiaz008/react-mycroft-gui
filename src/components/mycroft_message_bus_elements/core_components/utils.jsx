@@ -1,6 +1,27 @@
 import React, { Component } from 'react';
 import { handleFade } from '../utils/effects'
 
+export const TextFrame = (props) => {
+	setTimeout(() => {handleFade(`#${props.id}`, 8000)}, 1)
+	return (
+		<p
+			id={props.id}
+			className={props.className}>
+			{props.text}
+		</p>
+	)
+}
+
+export const ImageFrame = (props) => {
+	return (
+		<img 
+			id={props.id}
+			src={props.src}
+			onLoad={(e) => {handleFade(`#${props.id}`, 8000)}}>
+		</img>
+	)
+}
+
 export default function MediaFrame(props) {
 	const mediaString = props.mediaString
 	if (typeof(mediaString) == typeof("")) {
@@ -33,25 +54,4 @@ export default function MediaFrame(props) {
 	}
 
 	return (null)
-}
-
-export const ImageFrame = (props) => {
-	return (
-		<img 
-			id={props.id}
-			src={props.src}
-			onLoad={(e) => {handleFade(`#${props.id}`, 8000)}}>
-		</img>
-	)
-}
-
-export const TextFrame = (props) => {
-	setTimeout(() => {handleFade(`#${props.id}`, 8000)}, 1)
-	return (
-		<p
-			id={props.id}
-			className={props.className}>
-			{props.text}
-		</p>
-	)
 }
