@@ -12,13 +12,23 @@ export const TextFrame = (props) => {
 	)
 }
 
+export const Overlay = (props) => {
+	setTimeout(() => {handleFade('.overlay', 8000)}, 1)
+	return	(
+		<div className="overlay"></div>
+	)
+}
+
 export const ImageFrame = (props) => {
 	return (
-		<img 
-			id={props.id}
-			src={props.src}
-			onLoad={(e) => {handleFade(`#${props.id}`, 8000)}}>
-		</img>
+		<div>
+			<Overlay />
+			<img 
+				id={props.id}
+				src={props.src}
+				onLoad={(e) => {handleFade(`#${props.id}`, 12000)}}>
+			</img>
+		</div>
 	)
 }
 
@@ -32,14 +42,17 @@ export default function MediaFrame(props) {
 				case ("webm"):
 				case ("ogv"):
 					return (
-						<video 
-							id={props.id}
-							onLoadedMetadata={(e) => {handleFade(`#${props.id}`, (e.target.duration*1000))}} 
-							autoPlay={true}>
-							<source 
-								src={mediaString}
-								type="video/webm" />
-						</video>
+						<div>
+							<Overlay />
+							<video 
+								id={props.id}
+								onLoadedMetadata={(e) => {handleFade(`#${props.id}`, (e.target.duration*1000))}} 
+								autoPlay={true}>
+								<source 
+									src={mediaString}
+									type="video/webm" />
+							</video>
+						</div>
 					)
 			default:
 					return (

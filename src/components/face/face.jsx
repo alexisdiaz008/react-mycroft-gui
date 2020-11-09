@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import restingFace from './assets/images/black-hole.gif';
+import restingFace from './assets/images/ai.gif';
 import './assets/css/face.css';
 
 export default class Face extends Component {
@@ -9,11 +9,7 @@ export default class Face extends Component {
 		this.state = {
 			resting:true
 		}
-		// this.handleFullscreen.bind(this)
 	}
-	// put this in a button component and pass through prop
-	// handleFullscreen() {
-	// }
 
 	render() {
 		return (

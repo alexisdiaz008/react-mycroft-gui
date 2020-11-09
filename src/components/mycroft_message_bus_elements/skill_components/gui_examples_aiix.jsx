@@ -11,7 +11,6 @@ export default class GuiExamplesAiix extends React.Component {
   render() {
   	const skill_props = this.props.skillState
 		const component_name = this.props.componentName
-		{setTimeout(() => {handleFade('.skill-container', 8000)}, 1000)}
 
 		switch (component_name) {
 			case "SYSTEM_TextFrame":

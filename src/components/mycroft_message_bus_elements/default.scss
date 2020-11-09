@@ -4,45 +4,38 @@ $default-transition-speed: .5s;
 
 .skill-container {
   height: 100vh;
-  /*width: 100%;*/
-	/*position: fixed;*/
-	/*top: 0;*/
-  /*padding: 8rem 0;*/
 
-	img, video {
-    width: 100%;
-		max-width:100%;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-	}
   p {
     opacity: 0;
-    padding: 3rem 0;
+    width: 100%;
+    max-width:100%;
+    position: relative;
+    top: 42%;
     text-align:center;
+    z-index: 1;
+  }
+
+  img, video {
+    opacity: 0;
+    width: 100%;
+  	max-width:100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
-/*
+
 .overlay {
+  opacity: 0;
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  right: 0;
-  background-color: #008CBA;
-  overflow: hidden;
-  width: 0;
+  width: 100%;
   height: 100%;
-  transition: .5s ease;
+  background-color: rgba(0, 0, 0, 0.73);
+  z-index: 1;
 }
 
-.container:hover .overlay {
-  width: 100%;
-}*/
-/*
-.mediaFrameImg, .mediaFrameVideo {
-  opacity: 0;
-}
-*/
 .fade-in {
     -moz-animation-name: fadeIn;
     -webkit-animation-name: fadeIn;
