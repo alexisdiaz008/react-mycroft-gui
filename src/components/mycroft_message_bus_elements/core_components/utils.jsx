@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { handleFade } from '../utils/effects'
 
 export const TextFrame = (props) => {
-	setTimeout(() => {handleFade(`#${props.id}`, 8000)}, 1)
+	setTimeout(() => {handleFade(`#${props.id}`, (props.duration || 8000))}, (props.fadeDelay || 1))
 	return (
 		<p
 			id={props.id}
@@ -13,7 +13,7 @@ export const TextFrame = (props) => {
 }
 
 export const Overlay = (props) => {
-	setTimeout(() => {handleFade('.overlay', 8000)}, 1)
+	setTimeout(() => {handleFade('.overlay', (props.duration || 8000))}, (props.fadeDelay || 1))
 	return	(
 		<div className="overlay"></div>
 	)
@@ -26,7 +26,7 @@ export const ImageFrame = (props) => {
 			<img 
 				id={props.id}
 				src={props.src}
-				onLoad={(e) => {handleFade(`#${props.id}`, 12000)}}>
+				onLoad={(e) => {handleFade(`#${props.id}`, (props.duration || 12000))}}>
 			</img>
 		</div>
 	)
@@ -57,6 +57,7 @@ export default function MediaFrame(props) {
 			default:
 					return (
 						<ImageFrame
+							duration={props.duration || 12000)}
 							id={props.id}
 						  src={mediaString}
 						/>
