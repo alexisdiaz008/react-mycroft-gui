@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "CommonJS",
+    "target": "es5",
+    "jsx": "react",
+    "outDir": "./build/",
+    "strict": true,
+    "allowJs": true,
+    "checkJs": true,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
