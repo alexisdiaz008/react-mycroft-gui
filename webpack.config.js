@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
+    devtool: "inline-source-map",
     entry: './src/index.js',
     devServer: {
       port: 3000
@@ -20,7 +21,12 @@ module.exports = {
         extensions: ['*', '.js', '.jsx', '.tsx', '.ts', '.css'],
       },
     module: {
-        rules: [
+      rules: [
+            {
+              test: /\.tsx?$/,
+              loader: "ts-loader",
+              exclude: /node_modules/
+            },
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
