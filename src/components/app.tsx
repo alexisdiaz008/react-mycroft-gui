@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import Face from './face/face'
 import MycroftMessageBusSkillComponent from './mycroft_message_bus_elements/mycroft_message_bus';
 import 'bootstrap/dist/css/bootstrap.min.css';
