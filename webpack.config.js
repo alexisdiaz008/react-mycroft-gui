@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
     devtool: "inline-source-map",
-    entry: './src/index.js',
+    entry: './src/index.tsx',
     devServer: {
       port: 3000
     },
