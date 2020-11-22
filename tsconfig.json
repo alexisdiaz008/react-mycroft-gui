@@ -6,6 +6,7 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "module": "ES6",
+    "moduleResolution": "node",
     "noImplicitAny": true,
     "outDir": "./build/",
     "sourceMap": true,
