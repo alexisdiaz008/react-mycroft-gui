@@ -2,7 +2,7 @@
   "name": "react-mycroft-gui",
   "version": "1.0.0",
   "description": "react based front-end for mycroft",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "test": "test-app",
     "start": "webpack-dev-server --hot --open",
