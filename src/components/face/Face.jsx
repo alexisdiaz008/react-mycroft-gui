@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import restingFace from './assets/images/black-hole.gif';
-import './assets/css/face.css';
+import './assets/css/Face.css';
 
 export default class Face extends Component {
 	

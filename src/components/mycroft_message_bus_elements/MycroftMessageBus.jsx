@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import SkillComponentHandler from './skill_component_handler'
+import SkillComponentHandler from './SkillComponentHandler'
 
 export default class MycroftMessageBus extends Component {
-	
+
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -10,7 +10,7 @@ export default class MycroftMessageBus extends Component {
 			"mycroft.system.active_skills":null
 		}
 	}
-	
+
 	componentDidMount() {
 		if (this.state['ws.readyState'] = (null || 3)) {
 				this.connectMycroftGui()
