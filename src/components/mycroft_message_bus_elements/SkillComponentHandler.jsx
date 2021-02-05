@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './default.scss'
-import GuiExamplesAiix from './skill_components/gui_examples_aiix'
-import MycroftDateTime from './skill_components/mycroft_date_time'
-import MycroftWiki from './skill_components/mycroft_wiki'
+import GuiExamplesAiix from './skill_components/GuiExamplesAiix'
+import MycroftDateTime from './skill_components/MycroftDateTime'
+import MycroftWiki from './skill_components/MycroftWiki'
 
 export default class SkillComponentHandler extends Component {
 	constructor(props) {
