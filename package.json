@@ -4,7 +4,8 @@
   "description": "react based front-end for mycroft",
   "main": "index.tsx",
   "scripts": {
-    "test": "test-app",
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watchAll",
     "start": "webpack-dev-server --hot --open",
     "build": "cross-env NODE_ENV=development webpack --config webpack.config.js"
   },
