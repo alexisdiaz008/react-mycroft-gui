@@ -12,6 +12,7 @@ const config: Config.InitialOptions = {
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   collectCoverage: true,
+  "setupFilesAfterEnv": ["<rootDir>src/setupTests.ts"]
 };
 
 export default config;
