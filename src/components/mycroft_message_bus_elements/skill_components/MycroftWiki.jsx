@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useCallback} from 'react';
-import MediaFrame from '../core_components/media_frame'
+import MediaFrame from '../core_components/MediaFrame'
 
 export default class MycroftWiki extends React.Component {
 
