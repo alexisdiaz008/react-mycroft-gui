@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { handleFade } from '../utils/effects'
+import { handleFade } from '../utils/Effects'
 
 export default function MediaFrame(props) {
 	const mediaString = props.mediaString
@@ -11,16 +11,16 @@ export default function MediaFrame(props) {
 				case ("webm"):
 				case ("ogv"):
 					return (
-						<video 
+						<video
 							id="video_player"
-							onLoadedMetadata={(e) => {handleFade('.skill-container', (e.target.duration*1000))}} 
+							onLoadedMetadata={(e) => {handleFade('.skill-container', (e.target.duration*1000))}}
 							autoPlay={true}>
 							<source src={mediaString} type="video/webm" />
 						</video>
 					)
 			default:
 					return (
-						<img 
+						<img
 							src={mediaString}
 							onLoad={(e) => {handleFade('.skill-container', 8000)}}>
 						</img>
