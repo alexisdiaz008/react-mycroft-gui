@@ -6,6 +6,8 @@ const config: Config.InitialOptions = {
   roots: ["<rootDir>/src/"],
   verbose: true,
   transform: {
+    // process `*.js` files with `babel-jest`
+    "^.+\\.jsx?$": "babel-jest",
     // process `*.ts` files with `ts-jest`
     "^.+\\.tsx?$": "ts-jest",
   },
