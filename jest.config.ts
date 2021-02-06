@@ -14,7 +14,13 @@ const config: Config.InitialOptions = {
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   collectCoverage: true,
-  "setupFilesAfterEnv": ["<rootDir>src/setupTests.ts"]
+  setupFilesAfterEnv: ["<rootDir>src/setupTests.ts"],
+  moduleNameMapper: {
+    // for images, test using this file instead
+    "\\.(gif|jpg|jpeg|png|svg)$": "<rootDir>src/__mocks__/fileMock.ts",
+    // for stylesheets, test using this file instead
+    "\\.(css|less|scss)$": "<rootDir>src/__mocks__/styleMock.ts"
+  }
 };
 
 export default config;
