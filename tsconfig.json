@@ -11,7 +11,9 @@
     "outDir": "./build/",
     "sourceMap": true,
     "strict": true,
-    "target": "ES5"
+    "target": "ES5",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]

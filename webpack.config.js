@@ -18,7 +18,7 @@ module.exports = {
     ],
     resolve: {
         modules: [__dirname, 'src', 'node_modules'],
-        extensions: ['*', '.js', '.jsx', '.tsx', '.ts', '.css'],
+        extensions: ['*', '.js', '.jsx', '.tsx', '.ts', '.css', '.scss'],
       },
     module: {
       rules: [
@@ -45,7 +45,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jp(e*)g|svg|gif)$/,
+                test: /\.(gif|jp(e*)g|png|svg)$/,
                 use: [
                   {
                     loader: 'file-loader',
