@@ -41,6 +41,7 @@ export default class GuiExamplesAiix extends React.Component {
 					</div>
 				)
 		  default:
+		  	return (null)
 	      console.log("Unhandled component for: " + component_name)
 	      break
 		}

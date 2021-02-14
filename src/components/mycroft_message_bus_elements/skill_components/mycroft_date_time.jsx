@@ -8,7 +8,6 @@ export default class MycroftDateTime extends React.Component {
 
   render() {
   	const skill_props = this.props.skillState
-  	console.log("the time is "+ skill_props.time_string)
 
     return (
     	<div className="col-12 text-center">

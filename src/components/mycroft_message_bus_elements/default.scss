@@ -1,12 +1,20 @@
 $base-color: #2828288f;
 $default-opacity: 1;
-$default-transition-speed: .5s;
+$default-fade-transition-speed: .2s;
+$default-slide-transition-speed: .5s;
 
 .skill-container {
   height: 100vh;
 
+  /*THIS IS HOW WE WOULD INVERT TEXT FOR MIRRORING, PROGRAMMATICALLY ADD THIS, MAYBE THROUGH A BUTTON*/
+  /*  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);*/
+
   p {
-    opacity: 0;
+    /*opacity: 0;*/
     width: 100%;
     max-width:100%;
     position: relative;
@@ -36,15 +44,34 @@ $default-transition-speed: .5s;
   z-index: 1;
 }
 
+
+
+
+
+.offset {
+    left: -100px;
+    transition: $default-slide-transition-speed ease;
+}
+
+.slide-in {
+    left: 0;
+    transition: $default-slide-transition-speed ease;
+}
+
+.slide-out {
+    left: 100px;
+    transition: $default-slide-transition-speed ease;
+}
+
 .fade-in {
     -moz-animation-name: fadeIn;
     -webkit-animation-name: fadeIn;
     -ms-animation-name: fadeIn;
     animation-name: fadeIn;
-    -moz-animation-duration: $default-transition-speed;
-    -webkit-animation-duration: $default-transition-speed;
-    -ms-animation-duration: $default-transition-speed;
-    animation-duration: $default-transition-speed;
+    -moz-animation-duration: $default-fade-transition-speed;
+    -webkit-animation-duration: $default-fade-transition-speed;
+    -ms-animation-duration: $default-fade-transition-speed;
+    animation-duration: $default-fade-transition-speed;
     -moz-animation-timing-function: ease-in-out;
     -webkit-animation-timing-function: ease-in-out;
     -ms-animation-timing-function: ease-in-out;
@@ -60,10 +87,10 @@ $default-transition-speed: .5s;
     -webkit-animation-name: fadeOut;
     -ms-animation-name: fadeOut;
     animation-name: fadeOut;
-    -moz-animation-duration: $default-transition-speed;
-    -webkit-animation-duration: $default-transition-speed;
-    -ms-animation-duration: $default-transition-speed;
-    animation-duration: $default-transition-speed;
+    -moz-animation-duration: $default-fade-transition-speed;
+    -webkit-animation-duration: $default-fade-transition-speed;
+    -ms-animation-duration: $default-fade-transition-speed;
+    animation-duration: $default-fade-transition-speed;
     -moz-animation-timing-function: ease-in-out;
     -webkit-animation-timing-function: ease-in-out;
     -ms-animation-timing-function: ease-in-out;

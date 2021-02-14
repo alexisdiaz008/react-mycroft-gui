@@ -15,6 +15,7 @@ export default class SkillComponentHandler extends Component {
   	const component_focus = skill_state['component_focus']
 		const component_name = skill_state['components'][component_focus]
 		console.log(skill_state)
+		console.log(component_name)
 		switch (active_skill) {
   		case "gui-examples.aiix":
   			return (
@@ -38,6 +39,7 @@ export default class SkillComponentHandler extends Component {
   				/>
 				)
 		  default:
+		  	return (null)
 	      console.log("Unhandled component for: " + active_skill)
 	      break
 		}

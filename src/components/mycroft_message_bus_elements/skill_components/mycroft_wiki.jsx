@@ -28,6 +28,7 @@ export default class MycroftWiki extends React.Component {
 					</div>
 				)
 		  default:
+		  	return (null)
 	      console.log("Unhandled component for: " + component_name)
 	      break
 		}

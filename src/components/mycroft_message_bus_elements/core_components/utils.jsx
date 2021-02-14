@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { handleFade } from '../utils/effects'
+import { handleFadeSlide } from '../utils/effects'
 
 export const TextFrame = (props) => {
-	setTimeout(() => {handleFade(`#${props.id}`, (props.duration || 8000))}, (props.fadeDelay || 1))
+	setTimeout(() => {handleFadeSlide(`#${props.id}`, (props.duration || 8000))}, (props.fadeDelay || 1))
 	return (
 		<p
 			id={props.id}
@@ -26,7 +27,7 @@ export const ImageFrame = (props) => {
 			<img 
 				id={props.id}
 				src={props.src}
-				onLoad={(e) => {handleFade(`#${props.id}`, (props.duration || 12000))}}>
+				onLoad={(e) => {handleFadeSlide(`#${props.id}`, (props.duration || 12000))}}>
 			</img>
 		</div>
 	)
@@ -46,7 +47,7 @@ export default function MediaFrame(props) {
 							<Overlay />
 							<video 
 								id={props.id}
-								onLoadedMetadata={(e) => {handleFade(`#${props.id}`, (e.target.duration*1000))}} 
+								onLoadedMetadata={(e) => {handleFadeSlide(`#${props.id}`, (e.target.duration*1000))}} 
 								autoPlay={true}>
 								<source 
 									src={mediaString}
@@ -57,7 +58,7 @@ export default function MediaFrame(props) {
 			default:
 					return (
 						<ImageFrame
-							duration={props.duration || 12000)}
+							duration={(props.duration || 12000)}
 							id={props.id}
 						  src={mediaString}
 						/>
