@@ -2,9 +2,10 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import Face from '../components/face/Face';
 
+const wrapper = shallow(<Face />);
 
-describe('<Face />', () => {
-  test('renders the component', () => {
-    const component = shallow(<Face />);  expect(component).toMatchSnapshot();
+describe('Face component', () => {
+  it('renders correctly', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 });
