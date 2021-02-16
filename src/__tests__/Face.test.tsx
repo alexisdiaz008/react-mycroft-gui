@@ -5,7 +5,7 @@ import Face from '../components/face/Face';
 const wrapper = shallow(<Face />);
 
 describe('Face component', () => {
-  it('renders correctly', () => {
+  it('Renders correctly', () => {
     expect(wrapper).toMatchSnapshot();
   });
   it('Has image element', () => {

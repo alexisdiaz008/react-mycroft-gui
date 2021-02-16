@@ -5,7 +5,7 @@ import App from '../components/App';
 const wrapper = shallow(<App />);
 
 describe('App component', () => {
-  it('renders correctly', () => {
+  it('Renders correctly', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
