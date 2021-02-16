@@ -8,4 +8,7 @@ describe('Face component', () => {
   it('renders correctly', () => {
     expect(wrapper).toMatchSnapshot();
   });
+  it('Has image element', () => {
+    expect(wrapper.find('img').length).toBe(1);
+  });
 });
