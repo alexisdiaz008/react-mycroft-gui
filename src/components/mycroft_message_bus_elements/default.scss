@@ -18,7 +18,7 @@ $default-slide-transition-speed: .5s;
     width: 100%;
     max-width:100%;
     position: relative;
-    top: 42%;
+    top: 45vh;
     text-align:center;
     z-index: 2;
   }
@@ -28,7 +28,7 @@ $default-slide-transition-speed: .5s;
     width: 100%;
   	max-width:100%;
     position: absolute;
-    top: 50%;
+    top: 50vh;
     transform: translateY(-50%);
   }
 }

@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 import { handleFade } from '../utils/effects'
 import { handleFadeSlide } from '../utils/effects'
 
-export const TextFrame = (props) => {
-	setTimeout(() => {handleFadeSlide(`#${props.id}`, (props.duration || 8000))}, (props.fadeDelay || 1))
-	return (
-		<p
-			id={props.id}
-			className={props.className}>
-			{props.text}
-		</p>
-	)
-}
-
 export const Overlay = (props) => {
 	setTimeout(() => {handleFade('.overlay', (props.duration || 8000))}, (props.fadeDelay || 1))
 	return	(
 		<div className="overlay"></div>
+	)
+}
+
+export const TextFrame = (props) => {
+	setTimeout(() => {handleFadeSlide(`#${props.id}`, (props.duration || 8000))}, (props.fadeDelay || 1))
+	return (
+		<div>
+			<Overlay />
+			<p
+				id={props.id}
+				className={props.className}>
+				{props.text}
+			</p>
+		</div>
 	)
 }
 
