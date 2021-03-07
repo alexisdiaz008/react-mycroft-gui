@@ -15,45 +15,50 @@ export default class MycroftWeather extends React.Component {
 		super(props)
 	}
 
+	basicWeatherDisplay(props) {
+		const weather_animations = {0:sunny, 1:partlyCloudy, 2:cloudy, 3:rain, 4:rain, 5:storm, 6:snow, 7:fog}
+		return (
+			<div className="col-12">
+				<MediaFrame
+					id={"weatherImage"}
+					mediaString={weather_animations[props.weathercode]}
+				/>
+				<TextFrame
+					id={"current"}
+					className={"h1 px-3"}
+					text={`${props.current}°`}
+				/>
+				<TextFrame
+					id={"maxMin"}
+					className={"h2 px-3"}
+					text={`${props.max}° / ${props.min}°`}
+				/>
+				<TextFrame
+					id={"condition"}
+					className={"h4 px-3"}
+					text={props.condition}
+				/>
+				<TextFrame
+					id={"location"}
+					className={"h4 px-3"}
+					text={props.location}
+				/>
+			</div>
+		)
+	}
+
   render() {
   	const skill_props = this.props.skillState
 		const component_name = this.props.componentName
-		const weather_animations = {0:sunny, 1:partlyCloudy, 2:cloudy, 3:rain, 4:rain, 5:storm, 6:snow, 7:fog}
 
 		switch (component_name) {
 			case "weather":
 				return (
-					<div className="col-12">
-						<MediaFrame
-							id={"weatherImage"}
-							mediaString={weather_animations[skill_props.weathercode]}
-						/>
-						<TextFrame
-							id={"current"}
-							className={"h1 px-3"}
-							text={`${skill_props.current}°`}
-						/>
-						<TextFrame
-							id={"condition"}
-							className={"h4 px-3"}
-							text={skill_props.condition}
-						/>
-						<TextFrame
-							id={"location"}
-							className={"h4 px-3"}
-							text={skill_props.location}
-						/>
-					</div>
+					this.basicWeatherDisplay(skill_props)
 				)
 			case "highlow":
 				return (
-					<div className="col-12">
-						<TextFrame
-							id={"maxMin"}
-							className={"h1 px-3"}
-							text={`${skill_props.max}° / ${skill_props.min}°`}
-						/>
-					</div>
+					this.basicWeatherDisplay(skill_props)
 				)
 		  default:
 		  	return (null)
