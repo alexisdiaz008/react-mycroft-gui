@@ -1,13 +1,13 @@
 import React, { Component, useEffect, useCallback} from 'react';
 import MediaFrame from '../../core_components/utils'
 import { TextFrame } from '../../core_components/utils'
-import sunny from './assets/images/rain.gif';
-import partlycloudy from './assets/images/rain.gif';
-import cloudy from './assets/images/rain.gif';
+import sunny from './assets/images/sunny.gif';
+import partlyCloudy from './assets/images/partly_cloudy.gif';
+import cloudy from './assets/images/cloudy.gif';
 import rain from './assets/images/rain.gif';
-import storm from './assets/images/rain.gif';
-import snow from './assets/images/rain.gif';
-import fog from './assets/images/rain.gif';
+import storm from './assets/images/storm.gif';
+import snow from './assets/images/snow.gif';
+import fog from './assets/images/fog.gif';
 
 export default class MycroftWeather extends React.Component {
 
@@ -18,7 +18,7 @@ export default class MycroftWeather extends React.Component {
   render() {
   	const skill_props = this.props.skillState
 		const component_name = this.props.componentName
-		const weather_animations = {0:sunny, 1:partlycloudy, 2:cloudy, 3:rain, 4:rain, 5:storm, 6:snow, 7:fog}
+		const weather_animations = {0:sunny, 1:partlyCloudy, 2:cloudy, 3:rain, 4:rain, 5:storm, 6:snow, 7:fog}
 
 		switch (component_name) {
 			case "weather":
