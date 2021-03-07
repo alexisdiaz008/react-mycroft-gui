@@ -3,7 +3,7 @@ import './default.scss'
 import GuiExamplesAiix from './skill_components/gui_examples_aiix'
 import MycroftDateTime from './skill_components/mycroft_date_time'
 import MycroftWiki from './skill_components/mycroft_wiki'
-import MycroftWeather from './skill_components/mycroft_weather'
+import MycroftWeather from './skill_components/mycroft_weather/mycroft_weather'
 
 export default class SkillComponentHandler extends Component {
 	constructor(props) {
