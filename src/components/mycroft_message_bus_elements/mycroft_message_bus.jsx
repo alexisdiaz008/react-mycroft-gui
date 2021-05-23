@@ -18,6 +18,7 @@ export default class MycroftMessageBus extends Component {
 	}
 
 	connectMycroftGui() {
+
 		var ws = new WebSocket("ws://localhost:8181/core")
 	  ws.onopen = (event) => {
 	  	this.updateWebSocketReadyState(ws)
@@ -50,6 +51,14 @@ export default class MycroftMessageBus extends Component {
 
 	connectToGui(web_socket) {
 		web_socket.onmessage = (event) => {
+			let eventData = JSON.parse(event.data);
+
+			if (
+			  eventData.type === "gui.value.set" ||
+			  eventData.type === "gui.event.send"
+			) {
+				console.log(eventData.data)
+			}
 	    var msg = JSON.parse(event.data)
 	    if (msg.type == "mycroft.gui.port") {
 	    	console.log(`connecting to mycroft gui at ${msg.data['port']}`)
@@ -62,7 +71,7 @@ export default class MycroftMessageBus extends Component {
 	handleGuiMessages(gui_ws) {
     gui_ws.onmessage = (event) => {
     	let gui_msg = JSON.parse(event.data)
-    	// console.log(gui_msg)
+    	console.log(gui_msg)
     	// copy state to object to later reassign values, we should never alter state DIRECTLY, so we make an object representation instead
     	let component_namespace_state = Object.assign({}, this.state[gui_msg.namespace])
 			switch (gui_msg.type) {
