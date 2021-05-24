@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import SkillComponentHandler from './skill_component_handler'
+import React, { Component, useState } from 'react';
+import SkillComponent from './skill_component_handler'
 
 export default class MycroftMessageBus extends Component {
 	
@@ -13,18 +13,17 @@ export default class MycroftMessageBus extends Component {
 	
 	componentDidMount() {
 		if (this.state['ws.readyState'] = (null || 3)) {
-				this.connectMycroftGui()
+			this.connectMycroftGui()
 		}
 	}
 
 	connectMycroftGui() {
-
 		var ws = new WebSocket("ws://localhost:8181/core")
-	  ws.onopen = (event) => {
-	  	this.updateWebSocketReadyState(ws)
+		ws.onopen = (event) => {
+			this.updateWebSocketReadyState(ws)
 			this.announceConnection(ws)
 		}
-		this.connectToGui(ws)
+		this.handWebSocketMessages(ws)
 		ws.onclose = () => {
 			this.updateWebSocketReadyState(ws)
 		}
@@ -32,46 +31,38 @@ export default class MycroftMessageBus extends Component {
 
 	updateWebSocketReadyState(web_socket) {
 		this.setState({
-				['ws.readyState']: web_socket.readyState
-			}, ()=>{console.log(`mycroft core ready state: ${this.state['ws.readyState']}`)})
+			['ws.readyState']: web_socket.readyState
+		}, ()=>{console.log(`mycroft core ready state: ${this.state['ws.readyState']}`)})
 	}
 
-  announceConnection(web_socket) {
-	    // Announce to trigger send of "mycroft.gui.port" message with gui port
-	    web_socket.send(
-	        JSON.stringify(
-	            {"type":"mycroft.gui.connected",
-	             "data": {
-	                "gui_id":"js_gui"
-	             }
-	            }
-	        )
-	    )
+	announceConnection(web_socket) {
+		// Announce to trigger send of "mycroft.gui.port" message with gui port
+		web_socket.send(
+			JSON.stringify(
+				{"type":"mycroft.gui.connected",
+					"data": {
+						"gui_id":"js_gui"
+					}
+				}
+			)
+		)
 	}
 
-	connectToGui(web_socket) {
+	handWebSocketMessages(web_socket) {
 		web_socket.onmessage = (event) => {
-			let eventData = JSON.parse(event.data);
-
-			if (
-			  eventData.type === "gui.value.set" ||
-			  eventData.type === "gui.event.send"
-			) {
-				console.log(eventData.data)
+			var msg = JSON.parse(event.data)
+			// hook into start and end for face responses recognizer_loop:audio_output_start
+			if (msg.type == "mycroft.gui.port") {
+				console.log(`connecting to mycroft gui at ${msg.data['port']}`)
+				var gui_ws = new WebSocket(`ws://localhost:${msg.data["port"]}/gui`)
+				this.handleGuiMessages(gui_ws)
 			}
-	    var msg = JSON.parse(event.data)
-	    if (msg.type == "mycroft.gui.port") {
-	    	console.log(`connecting to mycroft gui at ${msg.data['port']}`)
-	    	var gui_ws = new WebSocket(`ws://localhost:${msg.data["port"]}/gui`)
-		    this.handleGuiMessages(gui_ws)
-	    }
-	  }
+		}
 	}
 
 	handleGuiMessages(gui_ws) {
     gui_ws.onmessage = (event) => {
     	let gui_msg = JSON.parse(event.data)
-    	console.log(gui_msg)
     	// copy state to object to later reassign values, we should never alter state DIRECTLY, so we make an object representation instead
     	let component_namespace_state = Object.assign({}, this.state[gui_msg.namespace])
 			switch (gui_msg.type) {
@@ -117,23 +108,20 @@ export default class MycroftMessageBus extends Component {
 		      }
 			  default:
 		      // Log unhandled messages
-		      // console.log("Unhandled message type: " + gui_msg.type)
+		      console.log("Unhandled message type: " + gui_msg.type)
 		      break
 			}
     }
 	}
 
 	render() {
-		const active_skill = this.state['mycroft.system.active_skills']
-		const active_skill_state = this.state[active_skill]
-		// console.log("CURRENTLY ACTIVE SKILL:\n" + (JSON.stringify(active_skill)))
-		// console.log("SKILL STATE:\n" + (JSON.stringify(active_skill_state)))
+		let active_skill = this.state['mycroft.system.active_skills']
+		let active_skill_state = this.state[active_skill]
 		if (active_skill && active_skill_state) {
 				let active_skill_state_focus = active_skill_state['component_focus']
 				if (active_skill_state_focus >= 1 || active_skill_state_focus == 0) {
-					// console.log("COMPONENT FOCUS:\n" + (JSON.stringify(active_skill_state_focus )))
 					return (
-						<SkillComponentHandler
+						<SkillComponent
 							activeSkill={active_skill}
 							skillState={active_skill_state}
 						/>

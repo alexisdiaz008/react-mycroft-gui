@@ -14,46 +14,43 @@ export default class SkillComponentHandler extends Component {
 	returnActiveSkillComponent() {
 		const active_skill = this.props.activeSkill
 		const skill_state = this.props.skillState
-  	const component_focus = skill_state['component_focus']
+		const component_focus = skill_state['component_focus']
 		const component_name = skill_state['components'][component_focus]
-		console.log(active_skill)
-		console.log(skill_state)
-		console.log(component_name)
 		switch (active_skill) {
-  		case "gui-examples.aiix":
-  			return (
-  				<GuiExamplesAiix
-  					skillState = {skill_state}
-  					componentName = {component_name}
-  				/>
+			case "gui-examples.aiix":
+				return (
+					<GuiExamplesAiix
+						skillState = {skill_state}
+						componentName = {component_name}
+					/>
 				)
-		  case "mycroft-date-time.mycroftai":
-		  	return (
-		  		<MycroftDateTime
-		  			skillState = {skill_state}
-		  			componentName = {component_name}
-		  		/>
-	  		)
-		  case "mycroft-ip.mycroftai":
-		  	return (
-		  		<MycroftIp
-		  			skillState = {skill_state}
-		  			componentName = {component_name}
-		  		/>
-	  		)
-  		case "mycroft-wiki.mycroftai":
-  			return (
-  				<MycroftWiki
-		  			skillState = {skill_state}
-		  			componentName = {component_name}
-  				/>
+			case "mycroft-date-time.mycroftai":
+				return (
+					<MycroftDateTime
+						skillState = {skill_state}
+						componentName = {component_name}
+					/>
 				)
-  		case "mycroft-wiki.mycroftai":
-  			return (
-  				<MycroftWiki
-		  			skillState = {skill_state}
-		  			componentName = {component_name}
-  				/>
+			case "mycroft-ip.mycroftai":
+				return (
+					<MycroftIp
+						skillState = {skill_state}
+						componentName = {component_name}
+					/>
+				)
+			case "mycroft-wiki.mycroftai":
+				return (
+					<MycroftWiki
+						skillState = {skill_state}
+						componentName = {component_name}
+					/>
+				)
+			case "mycroft-wiki.mycroftai":
+				return (
+					<MycroftWiki
+						skillState = {skill_state}
+						componentName = {component_name}
+					/>
 				)
 			case "mycroft-weather.mycroftai":
 				return (
@@ -62,10 +59,10 @@ export default class SkillComponentHandler extends Component {
 						componentName = {component_name}
 					/>
 				)
-		  default:
-		  	return (null)
-	      console.log("Unhandled component for: " + active_skill)
-	      break
+			default:
+				return (null)
+				console.log("Unhandled component for: " + active_skill)
+				break
 		}
 	}
 

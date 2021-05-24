@@ -12,7 +12,7 @@ export default class MycroftIp extends React.Component {
     return (
     	<div className="col-12 text-center">
 	    	<TextFrame
-					id={"dateString"}
+					id={"ipString"}
 					className={"h1"}
 					text={skill_props.ip}
 				/>

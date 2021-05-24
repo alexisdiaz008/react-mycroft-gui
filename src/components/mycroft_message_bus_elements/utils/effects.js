@@ -1,38 +1,35 @@
 
 export const handleFadeSlide = (targetSelector, duration) => {
-	// const target = document.querySelector(targetSelector)
-	// target.classList.add("offset")
-	// setTimeout(() => {
-	// 	target.classList.add("fade-in")
-	// 	target.classList.add("slide-in")
-	// }, .5)
-	// setTimeout(() => {
-	// 	target.classList.remove("fade-in")
-	// 	target.classList.add("fade-out")
-	// 	target.classList.add("slide-out")
-	// }, (duration))
-	handleSlide(targetSelector, duration)
-	handleFade(targetSelector, duration)
+	if ((typeof(targetSelector) != ("undefined" || null))) {
+		handleSlide(targetSelector, duration)
+		handleFade(targetSelector, duration)
+	}
 }
 
-export const handleFade = (targetSelector, duration) => {
-	const target = document.querySelector(targetSelector)
-	target.classList.add("fade-in")
-	setTimeout(() => {
-		target.classList.remove("fade-in")
-		target.classList.add("fade-out")
-	}, (duration))
+export const handleFade = (target, duration) => {
+	const element = document.querySelector(target)
+	if ((typeof(element) != ("undefined" || null)) && (typeof(element.classList) != ("undefined" || null))) {
+		element.classList.add("fade-in")
+		setTimeout(() => {
+			element.classList.remove("fade-in")
+			element.classList.add("fade-out")
+		}, (duration))
+	}
 }
 
-export const handleSlide = (targetSelector, duration) => {
-	const target = document.querySelector(targetSelector)
-	target.classList.add("offset")
-	setTimeout(() => {
-		target.classList.remove("offset")
-		target.classList.add("slide-in")
-	}, .1)
-	setTimeout(() => {
-		target.classList.remove("slide-in")
-		target.classList.add("slide-out")
-	}, (duration))
+export const handleSlide = (target, duration) => {
+	const element = document.querySelector(target)
+	if ((typeof(element) != (null))) {
+		if (typeof(element.classList) != (null)) {
+			element.classList.add("offset")
+			setTimeout(() => {
+				element.classList.remove("offset")
+				element.classList.add("slide-in")
+			}, .1)
+			setTimeout(() => {
+				element.classList.remove("slide-in")
+				element.classList.add("slide-out")
+			}, (duration))
+		}
+	}
 }

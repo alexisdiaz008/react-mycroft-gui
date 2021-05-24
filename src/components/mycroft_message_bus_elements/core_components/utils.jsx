@@ -1,16 +1,47 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { handleFade } from '../utils/effects'
 import { handleFadeSlide } from '../utils/effects'
 
+export const ContentElement = (props) => {
+	const [display, setDisplay] = useState(true);
+
+  const updateElementDisplay = () => {
+    setTimeout(() => {
+      setDisplay(false);
+    }, (props.duration || 5000));
+  };
+
+  if (display == true) {
+		switch (props.elementType) {
+			case "TextFrame":
+	    	return (
+	    		<TextFrame
+						id={props.id}
+						className={props.className}
+						text={props.text}
+						updateElementDisplay={updateElementDisplay}
+					/>
+				)
+		default:
+			return (null)
+			break
+		}
+	}	else {
+		return(null)
+	}
+}
+
 export const Overlay = (props) => {
-	setTimeout(() => {handleFade('.overlay', (props.duration || 8000))}, (props.fadeDelay || 1))
+	// USE REACT HOOKS TO SET STATE FOR EACH COMPONENT TO LATER CHANGE THAT STATE AND REMOVE THE COMPONENT
+	// setTimeout(() => {handleFade('.overlay', (props.duration || 8000))}, (props.fadeDelay || 1))
 	return	(
 		<div className="overlay"></div>
 	)
 }
 
 export const TextFrame = (props) => {
-	setTimeout(() => {handleFadeSlide(`#${props.id}`, (props.duration || 8000))}, (props.fadeDelay || 1))
+	props.updateElementDisplay()
+	// setTimeout(() => {handleFadeSlide(`#${props.id}`, (props.duration || 8000))}, (props.fadeDelay || 1))
 	return (
 		<div>
 			<Overlay />
