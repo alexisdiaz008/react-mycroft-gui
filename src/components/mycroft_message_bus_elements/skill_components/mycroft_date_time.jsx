@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { TextFrame } from '../core_components/utils'
 import { ContentElement } from '../core_components/utils'
 
 export default class MycroftDateTime extends React.Component {
@@ -13,13 +12,13 @@ export default class MycroftDateTime extends React.Component {
 		return (
 			<div className="col-12 text-center">
 				<ContentElement
-					elementType="TextFrame"
+					elementType={"TextFrame"}
 					id={"dateString"}
 					className={"h4"}
 					text={skill_props.date_string}
 				/>
 				<ContentElement
-					elementType="TextFrame"
+					elementType={"TextFrame"}
 					id={"timeString"}
 					className={"h1"}
 					text={skill_props.time_string}

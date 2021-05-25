@@ -1,15 +1,22 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect, useRef, useCallback } from 'react';
 import { handleFade } from '../utils/effects'
 import { handleFadeSlide } from '../utils/effects'
 
 export const ContentElement = (props) => {
-	const [display, setDisplay] = useState(true);
+	const [display, setDisplay] = useState(true)
+	const componentIsMounted = useRef(true)
 
-  const updateElementDisplay = () => {
-    setTimeout(() => {
-      setDisplay(false);
-    }, (props.duration || 5000));
-  };
+	useEffect(() => {
+		return () => {
+			componentIsMounted.current = false
+		}
+	}, [])
+
+	const updateElementDisplay = useCallback((duration) => {
+		setTimeout(() => {
+			if (componentIsMounted.current) setDisplay(false)
+		}, (duration || 10000))
+	}, [componentIsMounted])
 
   if (display == true) {
 		switch (props.elementType) {
@@ -19,6 +26,36 @@ export const ContentElement = (props) => {
 						id={props.id}
 						className={props.className}
 						text={props.text}
+						updateElementDisplay={updateElementDisplay}
+						duration={props.duration}
+					/>
+				)
+			case "ImageFrame":
+				return (
+					<ImageFrame
+						id={props.id}
+						className={props.className}
+						src={props.src}
+						updateElementDisplay={updateElementDisplay}
+						duration={props.duration}
+						effectDuration={props.effectDuration}
+					/>
+				)
+			case "MediaFrame":
+				return (
+					<MediaFrame
+						id={props.id}
+						className={props.className}
+						mediaString={props.mediaString}
+						updateElementDisplay={updateElementDisplay}
+						duration={props.duration}
+						effectDuration={props.effectDuration}
+					/>
+				)
+			case "Overlay":
+				return (
+					<Overlay 
+						duration={props.duration}
 						updateElementDisplay={updateElementDisplay}
 					/>
 				)
@@ -32,16 +69,16 @@ export const ContentElement = (props) => {
 }
 
 export const Overlay = (props) => {
-	// USE REACT HOOKS TO SET STATE FOR EACH COMPONENT TO LATER CHANGE THAT STATE AND REMOVE THE COMPONENT
-	// setTimeout(() => {handleFade('.overlay', (props.duration || 8000))}, (props.fadeDelay || 1))
+	// props.updateElementDisplay(props.duration)
+	// setTimeout(() => {handleFade('.overlay', (props.effectDuration || 8000))}, (props.fadeDelay || 1))
 	return	(
 		<div className="overlay"></div>
 	)
 }
 
 export const TextFrame = (props) => {
-	props.updateElementDisplay()
-	// setTimeout(() => {handleFadeSlide(`#${props.id}`, (props.duration || 8000))}, (props.fadeDelay || 1))
+	props.updateElementDisplay(props.duration)
+	// setTimeout(() => {handleFadeSlide(`#${props.id}`, (props.effectDuration || 8000))}, (props.fadeDelay || 1))
 	return (
 		<div>
 			<Overlay />
@@ -55,19 +92,22 @@ export const TextFrame = (props) => {
 }
 
 export const ImageFrame = (props) => {
+	props.updateElementDisplay(props.duration)
 	return (
 		<div>
 			<Overlay />
 			<img 
 				id={props.id}
+				className={props.className}
 				src={props.src}
-				onLoad={(e) => {handleFadeSlide(`#${props.id}`, (props.duration || 12000))}}>
+				onLoad={(e) => {handleFadeSlide(`#${props.id}`, (props.effectDuration || 9000))}}>
 			</img>
 		</div>
 	)
 }
 
-export default function MediaFrame(props) {
+export const MediaFrame = (props) => {
+	console.log(props)
 	const mediaString = props.mediaString
 	if (typeof(mediaString) == typeof("")) {
 		if (mediaString.length > 0) {
@@ -81,7 +121,14 @@ export default function MediaFrame(props) {
 							<Overlay />
 							<video 
 								id={props.id}
-								onLoadedMetadata={(e) => {handleFadeSlide(`#${props.id}`, (e.target.duration*1000))}} 
+								className={props.className}
+								onLoadedMetadata={
+									(e) => {
+										let duration = e.target.duration*1000
+										props.updateElementDisplay(duration)
+										handleFadeSlide(`#${props.id}`, (duration))
+									}
+								}
 								autoPlay={true}>
 								<source 
 									src={mediaString}
@@ -92,9 +139,12 @@ export default function MediaFrame(props) {
 			default:
 					return (
 						<ImageFrame
-							duration={(props.duration || 12000)}
 							id={props.id}
+							className={props.className}
 						  src={mediaString}
+						  updateElementDisplay={props.updateElementDisplay}
+							duration={props.duration}
+							effectDuration={props.effectDuration}
 						/>
 					)
 			  break

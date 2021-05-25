@@ -1,4 +1,5 @@
 
+// REWRITE THESE
 export const handleFadeSlide = (targetSelector, duration) => {
 	if ((typeof(targetSelector) != ("undefined" || null))) {
 		handleSlide(targetSelector, duration)

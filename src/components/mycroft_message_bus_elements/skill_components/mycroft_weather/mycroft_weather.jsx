@@ -19,26 +19,31 @@ export default class MycroftWeather extends React.Component {
 		const weather_animations = {0:sunny, 1:partlyCloudy, 2:cloudy, 3:rain, 4:rain, 5:storm, 6:snow, 7:fog}
 		return (
 			<div className="col-12">
-				<MediaFrame
+				<ContentElement
+					elementType="MediaFrame"
 					id={"weatherImage"}
 					mediaString={weather_animations[props.weathercode]}
 				/>
-				<TextFrame
+				<ContentElement
+					elementType="TextFrame"
 					id={"current"}
 					className={"h1 px-3"}
 					text={`${props.current}°`}
 				/>
-				<TextFrame
+				<ContentElement
+					elementType="TextFrame"
 					id={"maxMin"}
 					className={"h2 px-3"}
 					text={`${props.max}° / ${props.min}°`}
 				/>
-				<TextFrame
+				<ContentElement
+					elementType="TextFrame"
 					id={"condition"}
 					className={"h4 px-3"}
 					text={props.condition}
 				/>
-				<TextFrame
+				<ContentElement
+					elementType="TextFrame"
 					id={"location"}
 					className={"h4 px-3"}
 					text={props.location}
