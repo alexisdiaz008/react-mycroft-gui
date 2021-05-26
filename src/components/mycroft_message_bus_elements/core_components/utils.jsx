@@ -107,7 +107,6 @@ export const ImageFrame = (props) => {
 }
 
 export const MediaFrame = (props) => {
-	console.log(props)
 	const mediaString = props.mediaString
 	if (typeof(mediaString) == typeof("")) {
 		if (mediaString.length > 0) {

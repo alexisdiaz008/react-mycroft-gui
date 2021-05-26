@@ -1,15 +1,9 @@
 import React, { Component, useEffect, useCallback} from 'react';
 import { ContentElement } from '../core_components/utils'
 
-export default class MycroftWiki extends React.Component {
-
-	constructor(props) {
-		super(props)
-	}
-
-  render() {
-  	const skill_props = this.props.skillState
-		const component_name = this.props.componentName
+export function MycroftWiki(props) {
+  	const skill_props = props.skillState
+		const component_name = props.componentName
 		switch (component_name) {
 			case "WikipediaDelegate":
 				return (
@@ -32,5 +26,4 @@ export default class MycroftWiki extends React.Component {
 	      console.log("Unhandled component for: " + component_name)
 	      break
 		}
-  }
 }

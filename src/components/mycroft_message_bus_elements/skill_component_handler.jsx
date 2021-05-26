@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import './default.scss'
-import GuiExamplesAiix from './skill_components/gui_examples_aiix'
-import MycroftDateTime from './skill_components/mycroft_date_time'
-import MycroftIp from './skill_components/mycroft_ip'
-import MycroftWiki from './skill_components/mycroft_wiki'
-import MycroftWeather from './skill_components/mycroft_weather/mycroft_weather'
+import { GuiExamplesAiix } from './skill_components/gui_examples_aiix'
+import { MycroftDateTime } from './skill_components/mycroft_date_time'
+import { MycroftIp } from './skill_components/mycroft_ip'
+import { MycroftWiki } from './skill_components/mycroft_wiki'
+import { MycroftWeather } from './skill_components/mycroft_weather/mycroft_weather'
 
-export default class SkillComponentHandler extends Component {
-	constructor(props) {
-		super(props)
-	}
+export default function SkillComponentHandler(props) {
 
-	returnActiveSkillComponent() {
-		const active_skill = this.props.activeSkill
-		const skill_state = this.props.skillState
+	function returnActiveSkillComponent() {
+		const active_skill = props.activeSkill
+		const skill_state = props.skillState
 		const component_focus = skill_state['component_focus']
 		const component_name = skill_state['components'][component_focus]
 		switch (active_skill) {
@@ -66,11 +63,9 @@ export default class SkillComponentHandler extends Component {
 		}
 	}
 
-	render() {
-		return (
-			<div className="skill-container row">
-				{this.returnActiveSkillComponent()}
-			</div>
-		)
-	}
+	return (
+		<div className="skill-container row">
+			{returnActiveSkillComponent()}
+		</div>
+	)
 }
