@@ -14,6 +14,7 @@ export function GuiExamplesAiix(props) {
 					id={"text"}
 					className="col h5"
 					text={(skill_props['text'] || null )}
+					duration={3000}
 				/>
 			)
 		case "SYSTEM_ImageFrame":

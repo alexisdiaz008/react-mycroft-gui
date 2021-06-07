@@ -4,20 +4,34 @@ import { handleFadeSlide } from '../utils/effects'
 
 export const ContentElement = (props) => {
 	const [display, setDisplay] = useState(true)
-	const componentIsMounted = useRef(true)
+	const isMounted = useRef(false)
 
-	useEffect(() => {
-		return () => {
-			componentIsMounted.current = false
-		}
+	let timeOutDisplayUpdate = (duration) => {
+		setTimeout(() => {
+			if (isMounted.current){
+				setDisplay(false)
+			}
+		}, (duration || 10000))
+	}
+	const updateElementDisplay = useCallback((duration) => {
+		timeOutDisplayUpdate(duration)
 	}, [])
 
-	const updateElementDisplay = useCallback((duration) => {
-		setTimeout(() => {
-			if (componentIsMounted.current) setDisplay(false)
-		}, (duration || 10000))
-	}, [componentIsMounted])
+	if (props.display) {
+		const { display_event, display_event_callback} = props.display
+		if (display == false && display_event && display_event_callback && isMounted) {
+			setDisplay(true)
+			timeOutDisplayUpdate(props.duration)
+			display_event_callback()
+		}
+	}
 
+	useEffect(() => {
+		isMounted.current = true
+		return () => {
+			isMounted.current = false
+		}
+	},[])
   if (display == true) {
 		switch (props.elementType) {
 			case "TextFrame":
@@ -48,7 +62,7 @@ export const ContentElement = (props) => {
 						className={props.className}
 						mediaString={props.mediaString}
 						updateElementDisplay={updateElementDisplay}
-						duration={props.duration}
+						duration={2000}
 						effectDuration={props.effectDuration}
 					/>
 				)
@@ -63,7 +77,7 @@ export const ContentElement = (props) => {
 			return (null)
 			break
 		}
-	}	else {
+	} else {
 		return(null)
 	}
 }
@@ -76,31 +90,38 @@ export const Overlay = (props) => {
 	)
 }
 
-export const TextFrame = (props) => {
-	props.updateElementDisplay(props.duration)
+export const TextFrame = ({ id, text, className, duration, updateElementDisplay }) => {
+	useEffect(() => {
+		updateElementDisplay(duration)
+	}, [])
+	
 	// setTimeout(() => {handleFadeSlide(`#${props.id}`, (props.effectDuration || 8000))}, (props.fadeDelay || 1))
 	return (
 		<div>
 			<Overlay />
 			<p
-				id={props.id}
-				className={props.className}>
-				{props.text}
+				id={id}
+				className={className}>
+				{text}
 			</p>
 		</div>
 	)
 }
 
-export const ImageFrame = (props) => {
-	props.updateElementDisplay(props.duration)
+export const ImageFrame = ({ id, src, className, duration, updateElementDisplay }) => {
+	useEffect(() => {
+		updateElementDisplay(duration)
+	}, [])
 	return (
 		<div>
 			<Overlay />
 			<img 
-				id={props.id}
-				className={props.className}
-				src={props.src}
-				onLoad={(e) => {handleFadeSlide(`#${props.id}`, (props.effectDuration || 9000))}}>
+				id={id}
+				className={className}
+				src={src}
+				onLoad={(e) => {
+					// handleFadeSlide(`#${props.id}`, (props.effectDuration || 9000))
+				}}>
 			</img>
 		</div>
 	)
@@ -125,7 +146,7 @@ export const MediaFrame = (props) => {
 									(e) => {
 										let duration = e.target.duration*1000
 										props.updateElementDisplay(duration)
-										handleFadeSlide(`#${props.id}`, (duration))
+										// handleFadeSlide(`#${props.id}`, (duration))
 									}
 								}
 								autoPlay={true}>

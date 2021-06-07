@@ -64,6 +64,8 @@ export default class MycroftMessageBus extends Component {
     gui_ws.onmessage = (event) => {
     	let gui_msg = JSON.parse(event.data)
     	// copy state to object to later reassign values, we should never alter state DIRECTLY, so we make an object representation instead
+    	console.log(gui_msg.type)
+      console.log(gui_msg)
     	let component_namespace_state = Object.assign({}, this.state[gui_msg.namespace])
 			switch (gui_msg.type) {
 			  case "mycroft.session.list.insert":
@@ -90,6 +92,7 @@ export default class MycroftMessageBus extends Component {
 		      // assign pages list and determine page and component to focus
 		      component_namespace_state['components'] = page_list
 		      component_namespace_state['component_focus'] = gui_msg.position
+		      // component_namespace_state['displayEvent'] = gui_msg.event_name
 		      return (
 		      	this.setState({
 			      	[gui_msg.namespace]: component_namespace_state
@@ -98,12 +101,23 @@ export default class MycroftMessageBus extends Component {
 			  case "mycroft.events.triggered":
 		      // Used to switch page within currently active namespace if page focus event
 		      if (gui_msg.event_name == "page_gained_focus") {
+
+						let resetDisplayEvent = () => {
+							component_namespace_state['display'] = {['display_event']: null}
+							return (
+								this.setState({
+									[gui_msg.namespace]: component_namespace_state
+								})
+							)
+						}
 		      	component_namespace_state['component_focus'] = gui_msg.data['number']
+		      	component_namespace_state['display'] = {['display_event']: gui_msg.event_name, ['display_event_callback']: resetDisplayEvent}
 			      return (
 			      	this.setState({
-			      		['mycroft.system.active_skills']: gui_msg.namespace,
-				      	[gui_msg.namespace]: component_namespace_state
-				      })
+								['mycroft.system.active_skills']: gui_msg.namespace,
+								[gui_msg.namespace]: component_namespace_state
+							}
+				      )
 			      )
 		      }
 			  default:
@@ -120,6 +134,8 @@ export default class MycroftMessageBus extends Component {
 		if (active_skill && active_skill_state) {
 				let active_skill_state_focus = active_skill_state['component_focus']
 				if (active_skill_state_focus >= 1 || active_skill_state_focus == 0) {
+					console.log('MESSAGEBUS RENDER', this.state)
+					console.log(active_skill_state)
 					return (
 						<SkillComponent
 							activeSkill={active_skill}

@@ -24,7 +24,7 @@ $default-slide-transition-speed: .5s;
   }
 
   img, video {
-    opacity: 0;
+    /*opacity: 0;*/
     width: 100%;
   	max-width:100%;
     position: absolute;
@@ -34,7 +34,7 @@ $default-slide-transition-speed: .5s;
 }
 
 .overlay {
-  opacity: 0;
+  opacity: .3;
   position: absolute;
   top: 0;
   left: 0;

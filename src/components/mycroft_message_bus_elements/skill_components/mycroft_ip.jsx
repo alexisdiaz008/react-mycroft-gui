@@ -11,7 +11,8 @@ export function MycroftIp(props) {
 				id={"ipString"}
 				className={"h1"}
 				text={skill_props.ip}
-				duration={20000}
+				display={skill_props.display}
+				duration={10000}
 			/>
 		</div>
 	)
