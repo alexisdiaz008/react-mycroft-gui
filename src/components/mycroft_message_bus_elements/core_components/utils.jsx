@@ -62,7 +62,7 @@ export const ContentElement = (props) => {
 						className={props.className}
 						mediaString={props.mediaString}
 						updateElementDisplay={updateElementDisplay}
-						duration={2000}
+						duration={props.duration}
 						effectDuration={props.effectDuration}
 					/>
 				)

@@ -18,30 +18,40 @@ export function MycroftWeather(props) {
 					elementType="MediaFrame"
 					id={"weatherImage"}
 					mediaString={weather_animations[props.weathercode]}
+					display={skill_props.display}
+					duration={10000}
 				/>
 				<ContentElement
 					elementType="TextFrame"
 					id={"current"}
 					className={"h1 px-3"}
 					text={`${props.current}°`}
+					display={skill_props.display}
+					duration={10000}
 				/>
 				<ContentElement
 					elementType="TextFrame"
 					id={"maxMin"}
 					className={"h2 px-3"}
 					text={`${props.max}° / ${props.min}°`}
+					display={skill_props.display}
+					duration={10000}
 				/>
 				<ContentElement
 					elementType="TextFrame"
 					id={"condition"}
 					className={"h4 px-3"}
 					text={props.condition}
+					display={skill_props.display}
+					duration={10000}
 				/>
 				<ContentElement
 					elementType="TextFrame"
 					id={"location"}
 					className={"h4 px-3"}
 					text={props.location}
+					display={skill_props.display}
+					duration={10000}
 				/>
 			</div>
 		)

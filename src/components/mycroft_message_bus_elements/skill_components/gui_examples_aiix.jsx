@@ -14,7 +14,7 @@ export function GuiExamplesAiix(props) {
 					id={"text"}
 					className="col h5"
 					text={(skill_props['text'] || null )}
-					duration={3000}
+					duration={2000}
 				/>
 			)
 		case "SYSTEM_ImageFrame":
@@ -25,17 +25,20 @@ export function GuiExamplesAiix(props) {
 						id="title"
 						className="h2"
 						text={(skill_props['title'] || null )}
+						duration={2000}
 					/>
 					<ContentElement
 						elementType="ImageFrame"
 						id={"image"}
 					  src={(skill_props['image'] || null )}
 					  effectDuration={9000}
+					  duration={2000}
 					/>
 					<ContentElement
 						elementType="TextFrame"
 						className="h4"
 						text={(skill_props['caption'] || null )}
+						duration={2000}
 					/>
 				</div>
 			)

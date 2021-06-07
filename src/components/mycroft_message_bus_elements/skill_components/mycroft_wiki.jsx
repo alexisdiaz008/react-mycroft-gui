@@ -12,12 +12,14 @@ export function MycroftWiki(props) {
 							elementType={"MediaFrame"}
 							id={"imgLink"}
 							mediaString={skill_props.imgLink}
+							duration={15000}
 						/>
 						<ContentElement
 							elementType={"TextFrame"}
 							id={"summary"}
 							className={"h4 text-left px-3"}
 							text={skill_props.summary}
+							duration={15000}
 						/>
 					</div>
 				)

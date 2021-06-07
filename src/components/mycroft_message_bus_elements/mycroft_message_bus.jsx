@@ -64,8 +64,8 @@ export default class MycroftMessageBus extends Component {
     gui_ws.onmessage = (event) => {
     	let gui_msg = JSON.parse(event.data)
     	// copy state to object to later reassign values, we should never alter state DIRECTLY, so we make an object representation instead
-    	console.log(gui_msg.type)
-      console.log(gui_msg)
+    	// console.log(gui_msg.type)
+      // console.log(gui_msg)
     	let component_namespace_state = Object.assign({}, this.state[gui_msg.namespace])
 			switch (gui_msg.type) {
 			  case "mycroft.session.list.insert":
@@ -132,19 +132,17 @@ export default class MycroftMessageBus extends Component {
 		let active_skill = this.state['mycroft.system.active_skills']
 		let active_skill_state = this.state[active_skill]
 		if (active_skill && active_skill_state) {
-				let active_skill_state_focus = active_skill_state['component_focus']
-				if (active_skill_state_focus >= 1 || active_skill_state_focus == 0) {
-					console.log('MESSAGEBUS RENDER', this.state)
-					console.log(active_skill_state)
-					return (
-						<SkillComponent
-							activeSkill={active_skill}
-							skillState={active_skill_state}
-						/>
-					)
-				} else {
-					return (null)
-				}
+			let active_skill_state_focus = active_skill_state['component_focus']
+			if (active_skill_state_focus >= 1 || active_skill_state_focus == 0) {
+				return (
+					<SkillComponent
+						activeSkill={active_skill}
+						skillState={active_skill_state}
+					/>
+				)
+			} else {
+				return (null)
+			}
 		} else {
 			return (null)
 		}
