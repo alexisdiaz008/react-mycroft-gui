@@ -90,7 +90,7 @@ export const Overlay = (props) => {
 	)
 }
 
-export const TextFrame = ({ id, text, className, duration, updateElementDisplay }) => {
+export const TextFrame = ({ text, id, className, duration, updateElementDisplay }) => {
 	useEffect(() => {
 		updateElementDisplay(duration)
 	}, [])
@@ -127,8 +127,7 @@ export const ImageFrame = ({ id, src, className, duration, updateElementDisplay 
 	)
 }
 
-export const MediaFrame = (props) => {
-	const mediaString = props.mediaString
+export const MediaFrame = ({ mediaString, id, className, duration, updateElementDisplay }) => {
 	if (typeof(mediaString) == typeof("")) {
 		if (mediaString.length > 0) {
 			let fileTypeRegex = /\.(gif|jpe?g|tiff?|png|webp|bmp|webm|svg|ogv)$/i
@@ -140,12 +139,12 @@ export const MediaFrame = (props) => {
 						<div>
 							<Overlay />
 							<video 
-								id={props.id}
-								className={props.className}
+								id={id}
+								className={className}
 								onLoadedMetadata={
 									(e) => {
 										let duration = e.target.duration*1000
-										props.updateElementDisplay(duration)
+										updateElementDisplay(duration)
 										// handleFadeSlide(`#${props.id}`, (duration))
 									}
 								}
@@ -159,12 +158,11 @@ export const MediaFrame = (props) => {
 			default:
 					return (
 						<ImageFrame
-							id={props.id}
-							className={props.className}
+							id={id}
+							className={className}
 						  src={mediaString}
-						  updateElementDisplay={props.updateElementDisplay}
-							duration={props.duration}
-							effectDuration={props.effectDuration}
+						  updateElementDisplay={updateElementDisplay}
+							duration={duration}
 						/>
 					)
 			  break
