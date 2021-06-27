@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { ContentElement } from '../core_components/utils'
+import React, { Component } from "react";
+import { ContentElement } from "../core_components/utils";
 
 export function MycroftIp(props) {
-	const skill_props = props.skillState
+	const skill_props = props.skillState;
 
 	return (
 		<div className="col-12 text-center">
@@ -12,8 +12,8 @@ export function MycroftIp(props) {
 				className={"h1"}
 				text={skill_props.ip}
 				display={skill_props.display}
-				duration={15000}
+				duration={12000}
 			/>
 		</div>
-	)
+	);
 }

@@ -1,7 +1,7 @@
 $base-color: #2828288f;
 $default-opacity: 1;
-$default-fade-transition-speed: .2s;
-$default-slide-transition-speed: .5s;
+$default-fade-transition-speed: 0.2s;
+$default-slide-transition-speed: 0.5s;
 
 .skill-container {
   height: 100vh;
@@ -16,17 +16,18 @@ $default-slide-transition-speed: .5s;
   p {
     /*opacity: 0;*/
     width: 100%;
-    max-width:100%;
+    max-width: 100%;
     position: relative;
     top: 45vh;
-    text-align:center;
+    text-align: center;
     z-index: 2;
   }
 
-  img, video {
+  img,
+  video {
     /*opacity: 0;*/
     width: 100%;
-  	max-width:100%;
+    max-width: 100%;
     position: absolute;
     top: 50vh;
     transform: translateY(-50%);
@@ -34,7 +35,7 @@ $default-slide-transition-speed: .5s;
 }
 
 .overlay {
-  opacity: .3;
+  opacity: 0.3;
   position: absolute;
   top: 0;
   left: 0;
@@ -44,69 +45,139 @@ $default-slide-transition-speed: .5s;
   z-index: 1;
 }
 
-
 /*Effects*/
 
-
 .offset {
-    left: -100px;
-    transition: $default-slide-transition-speed ease;
+  left: -100px;
+  transition: $default-slide-transition-speed ease;
 }
 
 .slide-in {
-    left: 0;
-    transition: $default-slide-transition-speed ease;
+  left: 0;
+  transition: $default-slide-transition-speed ease;
 }
 
 .slide-out {
-    left: 100px;
-    transition: $default-slide-transition-speed ease;
+  left: 100px;
+  transition: $default-slide-transition-speed ease;
 }
 
 .fade-in {
-    -moz-animation-name: fadeIn;
-    -webkit-animation-name: fadeIn;
-    -ms-animation-name: fadeIn;
-    animation-name: fadeIn;
-    -moz-animation-duration: $default-fade-transition-speed;
-    -webkit-animation-duration: $default-fade-transition-speed;
-    -ms-animation-duration: $default-fade-transition-speed;
-    animation-duration: $default-fade-transition-speed;
-    -moz-animation-timing-function: ease-in-out;
-    -webkit-animation-timing-function: ease-in-out;
-    -ms-animation-timing-function: ease-in-out;
-    animation-timing-function: ease-in-out;
-    -moz-animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;  
-  }
-  
-  .fade-out {
-    -moz-animation-name: fadeOut;
-    -webkit-animation-name: fadeOut;
-    -ms-animation-name: fadeOut;
-    animation-name: fadeOut;
-    -moz-animation-duration: $default-fade-transition-speed;
-    -webkit-animation-duration: $default-fade-transition-speed;
-    -ms-animation-duration: $default-fade-transition-speed;
-    animation-duration: $default-fade-transition-speed;
-    -moz-animation-timing-function: ease-in-out;
-    -webkit-animation-timing-function: ease-in-out;
-    -ms-animation-timing-function: ease-in-out;
-    animation-timing-function: ease-in-out;
-    -moz-animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;  
-  }
-  
-  @-moz-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
-  @-webkit-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
-  @-ms-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
-  @-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+  -moz-animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
+  -ms-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -moz-animation-duration: $default-fade-transition-speed;
+  -webkit-animation-duration: $default-fade-transition-speed;
+  -ms-animation-duration: $default-fade-transition-speed;
+  animation-duration: $default-fade-transition-speed;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  -ms-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
 
-  @-moz-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
-  @-webkit-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
-  @-ms-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; }} 
-  @-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden;  }} 
+.fade-out {
+  -moz-animation-name: fadeOut;
+  -webkit-animation-name: fadeOut;
+  -ms-animation-name: fadeOut;
+  animation-name: fadeOut;
+  -moz-animation-duration: $default-fade-transition-speed;
+  -webkit-animation-duration: $default-fade-transition-speed;
+  -ms-animation-duration: $default-fade-transition-speed;
+  animation-duration: $default-fade-transition-speed;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  -ms-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@-ms-keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@-keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

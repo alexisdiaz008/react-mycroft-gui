@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { ContentElement } from '../core_components/utils'
+import React, { Component } from "react";
+import { ContentElement } from "../core_components/utils";
 
 export function MycroftDateTime(props) {
-	const skill_props = props.skillState
+	const skill_props = props.skillState;
 
 	return (
 		<div className="col-12 text-center">
@@ -21,5 +21,5 @@ export function MycroftDateTime(props) {
 				duration={7000}
 			/>
 		</div>
-	)
+	);
 }

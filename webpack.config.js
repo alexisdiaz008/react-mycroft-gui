@@ -1,54 +1,54 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
-    entry: './src/index.js',
+    entry: "./src/index.js",
     devServer: {
-      port: 3000
+        port: 3000,
     },
     output: {
-        filename: 'bundle.[hash].js',
-        path: path.resolve(__dirname, 'dist')
+        filename: "bundle.[hash].js",
+        path: path.resolve(__dirname, "dist"),
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './public/index.html'
-        })
+            template: "./public/index.html",
+        }),
     ],
     resolve: {
-        modules: [__dirname, 'src', 'node_modules'],
-        extensions: ['*', '.js', '.jsx', '.tsx', '.ts', '.css'],
-      },
+        modules: [__dirname, "src", "node_modules"],
+        extensions: ["*", ".js", ".jsx", ".tsx", ".ts", ".css"],
+    },
     module: {
         rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: require.resolve('babel-loader')
+                loader: require.resolve("babel-loader"),
             },
             {
-                test:/\.css$/,
-                use:['style-loader','css-loader']
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
             },
             {
                 test: /\.scss$/,
                 use: [
                     { loader: "style-loader" },
                     { loader: "css-loader" },
-                    { loader: "sass-loader" }
-                ]
+                    { loader: "sass-loader" },
+                ],
             },
             {
                 test: /\.(png|jp(e*)g|svg|gif)$/,
                 use: [
-                  {
-                    loader: 'file-loader',
-                    options: {
-                      name: 'images/[hash]-[name].[ext]',
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "images/[hash]-[name].[ext]",
+                        },
                     },
-                  },
-                ]
-            }
-        ]
-    }
-}
+                ],
+            },
+        ],
+    },
+};
