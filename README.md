@@ -1,12 +1,12 @@
 # react-mycroft-gui
 
-The React-Mycroft-Gui is an out-of-the-box solution for a GUI using the Mycroft open-source assistant.
+The React-Mycroft-Gui is an out-of-the-box solution for a GUI using the Mycroft open-source assistant, originally designed for the official 7 inch raspberry pi touch screen.
 
-While it works without configuration, it's easily extensible, and can be used with any Mycroft skill that outputs messages on the gui message bus.
+While it works without configuration for certain skills that currently have templates, it's easily extensible, and can be used with any Mycroft skill that outputs messages on the gui message bus.
 
 Simply clone, install dependencies with 'npm install', and run with 'npm start'
 
-To test, run Mycroft and ask something like:
+To test, you can use an existing gui template, run Mycroft and ask something like:
 "Wiki {query}"
 
 # Adding your own interfaces
