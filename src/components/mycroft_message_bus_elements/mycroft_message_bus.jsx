@@ -1,4 +1,5 @@
 import React, { Component, useState } from "react";
+import { Face } from "./widgets/face";
 import SkillComponent from "./skill_component_handler";
 
 export default class MycroftMessageBus extends Component {
@@ -7,6 +8,7 @@ export default class MycroftMessageBus extends Component {
 		this.state = {
 			"ws.readyState": null,
 			"mycroft.system.active_skills": null,
+			"face.active": false,
 		};
 	}
 
@@ -40,7 +42,6 @@ export default class MycroftMessageBus extends Component {
 	}
 
 	announceConnection(web_socket) {
-		// Announce to trigger send of "mycroft.gui.port" message with gui port
 		web_socket.send(
 			JSON.stringify({
 				type: "mycroft.gui.connected",
@@ -52,13 +53,19 @@ export default class MycroftMessageBus extends Component {
 	}
 
 	handWebSocketMessages(web_socket) {
+		let setFaceState = (active) => {
+			this.setState({ "face.active": active });
+		};
 		web_socket.onmessage = (event) => {
 			var msg = JSON.parse(event.data);
-			// hook into start and end for face responses recognizer_loop:audio_output_start
 			if (msg.type == "mycroft.gui.port") {
 				console.log(`connecting to mycroft gui at ${msg.data["port"]}`);
 				var gui_ws = new WebSocket(`ws://localhost:${msg.data["port"]}/gui`);
 				this.handleGuiMessages(gui_ws);
+			} else if (msg.type == "recognizer_loop:audio_output_start") {
+				setFaceState(true);
+			} else if (msg.type == "recognizer_loop:audio_output_end") {
+				setFaceState(false);
 			}
 		};
 	}
@@ -66,9 +73,6 @@ export default class MycroftMessageBus extends Component {
 	handleGuiMessages(gui_ws) {
 		gui_ws.onmessage = (event) => {
 			let gui_msg = JSON.parse(event.data);
-			// copy state to object to later reassign values, we should never alter state DIRECTLY, so we make an object representation instead
-			// console.log(gui_msg.type)
-			// console.log(gui_msg)
 			let component_namespace_state = Object.assign(
 				{},
 				this.state[gui_msg.namespace]
@@ -138,20 +142,33 @@ export default class MycroftMessageBus extends Component {
 	render() {
 		let active_skill = this.state["mycroft.system.active_skills"];
 		let active_skill_state = this.state[active_skill];
+		let face_state = this.state["face.active"];
+
+		let defaultFace = () => {
+			return (
+				<div className="container">
+					<Face active={face_state} />
+				</div>
+			);
+		};
+
 		if (active_skill && active_skill_state) {
 			let active_skill_state_focus = active_skill_state["component_focus"];
 			if (active_skill_state_focus >= 1 || active_skill_state_focus == 0) {
 				return (
-					<SkillComponent
-						activeSkill={active_skill}
-						skillState={active_skill_state}
-					/>
+					<div className="container">
+						<Face active={face_state} />
+						<SkillComponent
+							activeSkill={active_skill}
+							skillState={active_skill_state}
+						/>
+					</div>
 				);
 			} else {
-				return null;
+				return defaultFace();
 			}
 		} else {
-			return null;
+			return defaultFace();
 		}
 	}
 }
