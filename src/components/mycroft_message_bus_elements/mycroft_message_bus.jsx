@@ -14,17 +14,17 @@ export default class MycroftMessageBus extends Component {
 
 	componentDidMount() {
 		if ((this.state["ws.readyState"] = null || 3)) {
-			this.connectMycroftGui();
+			this.connectToCoreWebSocket();
 		}
 	}
 
-	connectMycroftGui() {
+	connectToCoreWebSocket() {
 		var ws = new WebSocket("ws://localhost:8181/core");
 		ws.onopen = (event) => {
 			this.updateWebSocketReadyState(ws);
 			this.announceConnection(ws);
 		};
-		this.handWebSocketMessages(ws);
+		this.handleCoreMessages(ws);
 		ws.onclose = () => {
 			this.updateWebSocketReadyState(ws);
 		};
@@ -52,20 +52,31 @@ export default class MycroftMessageBus extends Component {
 		);
 	}
 
-	handWebSocketMessages(web_socket) {
+	handleCoreMessages(web_socket) {
 		let setFaceState = (active) => {
 			this.setState({ "face.active": active });
 		};
 		web_socket.onmessage = (event) => {
 			var msg = JSON.parse(event.data);
-			if (msg.type == "mycroft.gui.port") {
-				console.log(`connecting to mycroft gui at ${msg.data["port"]}`);
-				var gui_ws = new WebSocket(`ws://localhost:${msg.data["port"]}/gui`);
-				this.handleGuiMessages(gui_ws);
-			} else if (msg.type == "recognizer_loop:audio_output_start") {
-				setFaceState(true);
-			} else if (msg.type == "recognizer_loop:audio_output_end") {
-				setFaceState(false);
+			switch (msg.type) {
+				case "recognizer_loop:audio_output_start":
+					setFaceState(true);
+					break;
+				case "recognizer_loop:audio_output_end":
+					setFaceState(false);
+					break;
+				case "mycroft.ready":
+					console.log("Mycroft is ready.");
+					break;
+				case "mycroft.gui.port":
+					console.log(msg.type);
+					console.log(`connecting to mycroft gui at port: ${msg.data["port"]}`);
+					var gui_ws = new WebSocket(`ws://localhost:${msg.data["port"]}/gui`);
+					this.handleGuiMessages(gui_ws);
+					break;
+				default:
+				// Log unhandled messages
+				// console.log("Unhandled message type: " + msg.type);
 			}
 		};
 	}
@@ -134,7 +145,6 @@ export default class MycroftMessageBus extends Component {
 				default:
 					// Log unhandled messages
 					console.log("Unhandled message type: " + gui_msg.type);
-					break;
 			}
 		};
 	}

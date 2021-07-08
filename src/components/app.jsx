@@ -3,14 +3,8 @@ import MycroftMessageBusSkillComponent from "./mycroft_message_bus_elements/mycr
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="container">
-        <MycroftMessageBusSkillComponent />
-      </div>
-    );
-  }
+export function App() {
+  return <MycroftMessageBusSkillComponent />;
 }
 
 export default App;
