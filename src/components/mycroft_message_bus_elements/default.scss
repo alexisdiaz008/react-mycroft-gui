@@ -110,6 +110,7 @@ $default-slide-transition-speed: 0.5s;
     visibility: visible;
   }
 }
+
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
@@ -120,6 +121,7 @@ $default-slide-transition-speed: 0.5s;
     visibility: visible;
   }
 }
+
 @-ms-keyframes fadeIn {
   0% {
     opacity: 0;
@@ -130,7 +132,8 @@ $default-slide-transition-speed: 0.5s;
     visibility: visible;
   }
 }
-@-keyframes fadeIn {
+
+@keyframes fadeIn {
   0% {
     opacity: 0;
     visibility: hidden;
@@ -151,6 +154,7 @@ $default-slide-transition-speed: 0.5s;
     visibility: hidden;
   }
 }
+
 @-webkit-keyframes fadeOut {
   0% {
     opacity: 1;
@@ -161,6 +165,7 @@ $default-slide-transition-speed: 0.5s;
     visibility: hidden;
   }
 }
+
 @-ms-keyframes fadeOut {
   0% {
     opacity: 1;
@@ -171,7 +176,8 @@ $default-slide-transition-speed: 0.5s;
     visibility: hidden;
   }
 }
-@-keyframes fadeOut {
+
+@keyframes fadeOut {
   0% {
     opacity: 1;
     visibility: visible;
