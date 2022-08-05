@@ -12,6 +12,8 @@ export default function SkillComponentHandler(props) {
 		const skill_state = props.skillState;
 		const component_focus = skill_state["component_focus"];
 		const component_name = skill_state["components"][component_focus];
+
+		const skills = {}
 		switch (active_skill) {
 			case "gui-examples.aiix":
 				return (
@@ -53,9 +55,8 @@ export default function SkillComponentHandler(props) {
 					/>
 				);
 			default:
-				return null;
 				console.log("Unhandled component for: " + active_skill);
-				break;
+				return null;
 		}
 	}
 

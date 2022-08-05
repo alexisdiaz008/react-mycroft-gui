@@ -25,7 +25,7 @@ export function MycroftWeather(props) {
 				<ContentElement
 					elementType="MediaFrame"
 					id={"weatherImage"}
-					mediaString={weather_animations[props.weathercode]}
+					mediaString={weather_animations[props.weatherCode]}
 					display={skill_props.display}
 					duration={10000}
 				/>
@@ -33,7 +33,7 @@ export function MycroftWeather(props) {
 					elementType="TextFrame"
 					id={"current"}
 					className={"h1 px-3"}
-					text={`${props.current}°`}
+					text={`${props.currentTemperature}°`}
 					display={skill_props.display}
 					duration={10000}
 				/>
@@ -41,7 +41,7 @@ export function MycroftWeather(props) {
 					elementType="TextFrame"
 					id={"maxMin"}
 					className={"h2 px-3"}
-					text={`${props.max}° / ${props.min}°`}
+					text={`${props.highTemperature}° / ${props.lowTemperature}°`}
 					display={skill_props.display}
 					duration={10000}
 				/>
@@ -55,9 +55,25 @@ export function MycroftWeather(props) {
 				/>
 				<ContentElement
 					elementType="TextFrame"
+					id={"condition"}
+					className={"h4 px-3"}
+					text={`Humidity: ${props.humidity} %`}
+					display={skill_props.display}
+					duration={10000}
+				/>
+				<ContentElement
+					elementType="TextFrame"
+					id={"condition"}
+					className={"h4 px-3"}
+					text={`Wind: ${props.windSpeed} MPH`}
+					display={skill_props.display}
+					duration={10000}
+				/>
+				<ContentElement
+					elementType="TextFrame"
 					id={"location"}
 					className={"h4 px-3"}
-					text={props.location}
+					text={props.weatherLocation}
 					display={skill_props.display}
 					duration={10000}
 				/>
@@ -73,9 +89,14 @@ export function MycroftWeather(props) {
 			return basicWeatherDisplay(skill_props);
 		case "highlow":
 			return basicWeatherDisplay(skill_props);
+		case "daily_scalable":
+			return basicWeatherDisplay(skill_props);
+		case "current_1_scalable":
+			return basicWeatherDisplay(skill_props);
+		case "current_2_scalable":
+			return basicWeatherDisplay(skill_props);
 		default:
-			return null;
 			console.log("Unhandled component for: " + component_name);
-			break;
+			return null;
 	}
 }
