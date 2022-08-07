@@ -37,13 +37,6 @@ export function MycroftDateTime(props) {
 			<div className="col-12">
 				<ContentElement
 					elementType={"TextFrame"}
-					id={"dateString"}
-					className={"col-12 h4"}
-					text={skill_props.date_string}
-					duration={duration}
-				/>
-				<ContentElement
-					elementType={"TextFrame"}
 					id={"timeString"}
 					className={"col-12 h1"}
 					text={skill_props.time_string}
@@ -51,15 +44,22 @@ export function MycroftDateTime(props) {
 				/>
 				<ContentElement
 					elementType={"TextFrame"}
-					id={"timeString"}
-					className={"col-12 h1"}
+					id={"dateString"}
+					className={"col-12 h4"}
+					text={skill_props.date_string}
+					duration={duration}
+				/>
+				<ContentElement
+					elementType={"TextFrame"}
+					id={"weekDayString"}
+					className={"col-12 h2"}
 					text={skill_props.weekday_string}
 					duration={duration}
 				/>
 				<div className="row">
 					<ContentElement
 						elementType={"TextFrame"}
-						id={"timeString"}
+						id={"fullTimeString"}
 						className={"col-12 h3"}
 						text={`${month}, ${day}, ${year}`}
 						duration={duration}
