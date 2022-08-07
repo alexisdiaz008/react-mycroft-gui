@@ -43,6 +43,7 @@ export const ContentElement = (props) => {
 			isMounted.current = false;
 		};
 	}, []);
+
 	if (display == true) {
 		switch (props.elementType) {
 			case "TextFrame":
@@ -80,23 +81,30 @@ export const ContentElement = (props) => {
 			case "Overlay":
 				return (
 					<Overlay
+						id={'overlay'}
 						duration={props.duration}
 						updateElementDisplay={updateElementDisplay}
 					/>
 				);
 			default:
 				return null;
-				break;
 		}
-	} else {
-		return null;
 	}
+
+	return null;
 };
 
-export const Overlay = (props) => {
+export const Overlay = ({
+	duration,
+	updateElementDisplay,
+}) => {
+	useEffect(() => {
+		updateElementDisplay(duration);
+	}, []);
+
 	// props.updateElementDisplay(props.duration)
 	// setTimeout(() => {handleFade('.overlay', (props.effectDuration || 8000))}, (props.fadeDelay || 1))
-	return <div className="overlay"></div>;
+	return <div id='overlay' className="overlay"></div>;
 };
 
 export const TextFrame = ({
@@ -112,12 +120,11 @@ export const TextFrame = ({
 
 	// setTimeout(() => {handleFadeSlide(`#${props.id}`, (props.effectDuration || 8000))}, (props.fadeDelay || 1))
 	return (
-		<div>
-			<Overlay />
+		<>
 			<p id={id} className={className}>
 				{text}
 			</p>
-		</div>
+		</>
 	);
 };
 
@@ -133,7 +140,6 @@ export const ImageFrame = ({
 	}, []);
 	return (
 		<div>
-			<Overlay />
 			<img
 				id={id}
 				className={className}

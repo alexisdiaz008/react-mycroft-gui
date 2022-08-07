@@ -3,35 +3,33 @@ $default-opacity: 1;
 $default-fade-transition-speed: 0.2s;
 $default-slide-transition-speed: 0.5s;
 
-.skill-container {
+// .container {
+//   // THIS IS HOW WE WOULD INVERT TEXT FOR MIRRORING*/
+//   -moz-transform: scale(-1, 1);
+//   -webkit-transform: scale(-1, 1);
+//   -o-transform: scale(-1, 1);
+//   -ms-transform: scale(-1, 1);
+//   transform: scale(-1, 1);
+// }
+
+.v-aligned-container {
+  display: flex;
+  align-items: center;
   height: 100vh;
+}
 
-  /*THIS IS HOW WE WOULD INVERT TEXT FOR MIRRORING*/
-  /*  -moz-transform: scale(-1, 1);
-  -webkit-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  -ms-transform: scale(-1, 1);
-  transform: scale(-1, 1);*/
+p {
+  z-index: 2;
+}
 
-  p {
-    /*opacity: 0;*/
-    width: 100%;
-    max-width: 100%;
-    position: relative;
-    top: 45vh;
-    text-align: center;
-    z-index: 2;
-  }
-
-  img,
-  video {
-    /*opacity: 0;*/
-    width: 100%;
-    max-width: 100%;
-    position: absolute;
-    top: 50vh;
-    transform: translateY(-50%);
-  }
+img,
+video {
+  /*opacity: 0;*/
+  // width: 100%;
+  // max-width: 100%;
+  // position: absolute;
+  // top: 50vh;
+  // transform: translateY(-50%);
 }
 
 .overlay {

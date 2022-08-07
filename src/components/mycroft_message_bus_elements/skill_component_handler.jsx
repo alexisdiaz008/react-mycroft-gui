@@ -60,7 +60,5 @@ export default function SkillComponentHandler(props) {
 		}
 	}
 
-	return (
-		<div className="skill-container row">{returnActiveSkillComponent()}</div>
-	);
+	return returnActiveSkillComponent()
 }
