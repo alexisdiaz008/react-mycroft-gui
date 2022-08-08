@@ -1,32 +1,55 @@
 import React, { Component } from "react";
 import { ContentElement } from "../core_components/utils";
 
-const sanitizedMonth = (props) => {
+const SanitizedMonth = (props) => {
 	let [month, day] = [
 		props.month_string,
 		props.day_string,
 	]
 
-	if (
-		month && 
-		day && 
-		day.length > 0 && 
-		month.includes(day)) {
-		return month.replace(` ${day}`, '')
-	} else {
-		return month
-	}
+	return (
+		( month && 
+			day && 
+			day.length > 0 && 
+			month.includes(day)
+		) ? month.replace(` ${day}`, '') :
+			month
+	)
+}
+
+const HumanizedDateTime = (props, duration) => {
+	const [month, day, year] = [
+		SanitizedMonth(props),
+		props.day_string,
+		props.year_string
+	]
+
+	let humanizedDateText = (
+		month && day && year ? `${SanitizedMonth(props)}, ${day}, ${year}` :
+		month && day ? `${SanitizedMonth(props)}, ${day}` :
+		month ? SanitizedMonth(props) :
+		null
+	)
+	
+	return (
+		(humanizedDateText) ? 
+		<div className="row">
+			<ContentElement
+				elementType={"TextFrame"}
+				id={"fullTimeString"}
+				className={"col-12 h3"}
+				text={humanizedDateText}
+				duration={duration}
+			/>
+		</div> :
+		null
+	)
 }
 
 export function MycroftDateTime(props) {
 	const skill_props = props.skillState;
 	const duration = 7000
-	
-	const [month, day, year] = [
-		sanitizedMonth(skill_props),
-		skill_props.day_string,
-		skill_props.year_string
-	]
+	console.log(skill_props)
 
 	return (
 		<div className="v-aligned-container row text-center">
@@ -56,15 +79,7 @@ export function MycroftDateTime(props) {
 					text={skill_props.weekday_string}
 					duration={duration}
 				/>
-				<div className="row">
-					<ContentElement
-						elementType={"TextFrame"}
-						id={"fullTimeString"}
-						className={"col-12 h3"}
-						text={`${month}, ${day}, ${year}`}
-						duration={duration}
-					/>
-				</div>
+				{HumanizedDateTime(skill_props, duration)}
 			</div>
 		</div>
 	);
