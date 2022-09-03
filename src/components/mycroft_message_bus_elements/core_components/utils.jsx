@@ -193,7 +193,6 @@ export const MediaFrame = ({
 							duration={duration}
 						/>
 					);
-					break;
 			}
 		}
 	}

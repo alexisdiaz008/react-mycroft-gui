@@ -42,8 +42,7 @@ export function GuiExamplesAiix(props) {
 				</div>
 			);
 		default:
-			return null;
 			console.log("Unhandled component for: " + component_name);
-			break;
+			return null;
 	}
 }
