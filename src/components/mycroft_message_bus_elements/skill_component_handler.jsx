@@ -31,11 +31,7 @@ export default function SkillComponentHandler(props) {
 				);
 			case "mycroft-ip.mycroftai":
 				return (
-					<MycroftIp skillState={skill_state} componentName={component_name} />
-				);
-			case "mycroft-wiki.mycroftai":
-				return (
-					<MycroftWiki
+					<MycroftIp
 						skillState={skill_state}
 						componentName={component_name}
 					/>
