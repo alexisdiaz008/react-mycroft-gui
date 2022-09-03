@@ -5,11 +5,11 @@ export function MycroftIp(props) {
 	const skill_props = props.skillState;
 
 	return (
-		<div className="col-12 text-center">
+		<div className="v-aligned-container text-center">
 			<ContentElement
 				elementType={"TextFrame"}
 				id={"ipString"}
-				className={"h1"}
+				className={"col-12 h1"}
 				text={skill_props.ip}
 				display={skill_props.display}
 				duration={15000}
