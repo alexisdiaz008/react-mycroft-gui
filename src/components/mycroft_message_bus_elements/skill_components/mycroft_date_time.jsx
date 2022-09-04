@@ -49,7 +49,6 @@ const HumanizedDateTime = (props, duration) => {
 export function MycroftDateTime(props) {
 	const skill_props = props.skillState;
 	const duration = 7000
-	console.log(skill_props)
 
 	return (
 		<div className="v-aligned-container row text-center">

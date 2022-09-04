@@ -4,13 +4,15 @@ import { ContentElement } from "../core_components/utils";
 export function MycroftWiki(props) {
 	const skill_props = props.skillState;
 	const component_name = props.componentName;
+
 	switch (component_name) {
 		case "WikipediaDelegate":
 			return (
-				<div>
+				<div className="v-aligned-container row text-center">
 					<ContentElement
 						elementType={"MediaFrame"}
 						id={"imgLink"}
+						className={"col-12"}
 						mediaString={skill_props.imgLink}
 						duration={15000}
 					/>

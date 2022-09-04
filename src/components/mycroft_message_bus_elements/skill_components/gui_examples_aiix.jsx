@@ -9,33 +9,36 @@ export function GuiExamplesAiix(props) {
 	switch (component_name) {
 		case "SYSTEM_TextFrame":
 			return (
-				<ContentElement
-					elementType="TextFrame"
-					id={"text"}
-					className="col h5"
-					text={skill_props["text"] || null}
-					duration={2000}
-				/>
+				<div className="v-aligned-container row text-center">
+					<ContentElement
+						elementType="TextFrame"
+						id={"text"}
+						className="col h5"
+						text={skill_props["text"] || null}
+						duration={2000}
+					/>
+				</div>
 			);
 		case "SYSTEM_ImageFrame":
 			return (
-				<div>
+				<div className="v-aligned-container row text-center">
 					<ContentElement
 						elementType="TextFrame"
 						id="title"
-						className="h2"
+						className="col-12 h2"
 						text={skill_props["title"] || null}
 						duration={2000}
 					/>
 					<ContentElement
 						elementType="ImageFrame"
 						id={"image"}
+						className="col-12"
 						src={skill_props["image"] || null}
 						duration={2000}
 					/>
 					<ContentElement
 						elementType="TextFrame"
-						className="h4"
+						className="col-12 h4"
 						text={skill_props["caption"] || null}
 						duration={2000}
 					/>

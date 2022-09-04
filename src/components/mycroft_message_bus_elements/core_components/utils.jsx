@@ -139,16 +139,14 @@ export const ImageFrame = ({
 		updateElementDisplay(duration);
 	}, []);
 	return (
-		<div>
-			<img
-				id={id}
-				className={className}
-				src={src}
-				onLoad={(e) => {
-					// handleFadeSlide(`#${props.id}`, (props.effectDuration || 9000))
-				}}
-			></img>
-		</div>
+		<img
+			id={id}
+			className={className}
+			src={src}
+			onLoad={(e) => {
+				// handleFadeSlide(`#${props.id}`, (props.effectDuration || 9000))
+			}}
+		></img>
 	);
 };
 

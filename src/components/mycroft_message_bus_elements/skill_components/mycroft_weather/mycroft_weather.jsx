@@ -10,6 +10,7 @@ import fog from "./assets/images/fog.gif";
 
 export function MycroftWeather(props) {
 	const basicWeatherDisplay = (props) => {
+		const duration = 10000
 		const weather_animations = {
 			0: sunny,
 			1: partlyCloudy,
@@ -20,62 +21,64 @@ export function MycroftWeather(props) {
 			6: snow,
 			7: fog,
 		};
+
 		return (
-			<div className="col-12">
+			<div className="v-aligned-container row text-center py-3">
 				<ContentElement
 					elementType="MediaFrame"
 					id={"weatherImage"}
+					className={"col-12"}
 					mediaString={weather_animations[props.weatherCode]}
-					display={skill_props.display}
-					duration={10000}
+					display={props.display}
+					duration={duration}
 				/>
 				<ContentElement
 					elementType="TextFrame"
 					id={"current"}
-					className={"h1 px-3"}
+					className={"col-12 h1 px-3"}
 					text={`${props.currentTemperature}°`}
-					display={skill_props.display}
-					duration={10000}
+					display={props.display}
+					duration={duration}
 				/>
 				<ContentElement
 					elementType="TextFrame"
 					id={"maxMin"}
-					className={"h2 px-3"}
+					className={"col-12 h2 px-3"}
 					text={`${props.highTemperature}° / ${props.lowTemperature}°`}
-					display={skill_props.display}
-					duration={10000}
+					display={props.display}
+					duration={duration}
 				/>
 				<ContentElement
 					elementType="TextFrame"
 					id={"condition"}
-					className={"h4 px-3"}
+					className={"col-12 h4 px-3"}
 					text={props.condition}
-					display={skill_props.display}
-					duration={10000}
+					display={props.display}
+					duration={duration}
 				/>
 				<ContentElement
 					elementType="TextFrame"
 					id={"condition"}
-					className={"h4 px-3"}
+					className={"col-12 h4 px-3"}
 					text={`Humidity: ${props.humidity} %`}
-					display={skill_props.display}
-					duration={10000}
+					display={props.display}
+					duration={duration}
 				/>
 				<ContentElement
 					elementType="TextFrame"
 					id={"condition"}
-					className={"h4 px-3"}
+					className={"col-12 h4 px-3"}
 					text={`Wind: ${props.windSpeed} MPH`}
-					display={skill_props.display}
-					duration={10000}
+					display={props.display}
+					duration={duration}
 				/>
 				<ContentElement
 					elementType="TextFrame"
 					id={"location"}
-					className={"h4 px-3"}
+					className={"col-12 h4 px-3"}
 					text={props.weatherLocation}
-					display={skill_props.display}
-					duration={10000}
+					display={props.display}
+					duration={duration}
 				/>
 			</div>
 		);
