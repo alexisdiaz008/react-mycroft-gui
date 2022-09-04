@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import { Face } from "./widgets/face";
+import { Face } from "./widgets/face/face";
 import SkillComponent from "./skill_component_handler";
 
 export default class MycroftMessageBus extends Component {

@@ -4,9 +4,8 @@ import restingFace from "./assets/images/adjutant_resting.gif";
 import "./assets/css/face.css";
 
 export function Face(props) {
-	if (props.active == true) {
-		return <img src={activeFace} className="face row" alt="logo" />;
-	} else {
-		return <img src={restingFace} className="face row" alt="logo" />;
-	}
+	let faceState =
+	(props.active == true) ? activeFace : restingFace;
+
+	return <img src={faceState} className="face row" alt="logo" />;
 }
