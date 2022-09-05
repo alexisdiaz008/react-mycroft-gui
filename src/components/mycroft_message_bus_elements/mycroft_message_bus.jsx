@@ -175,7 +175,7 @@ export default class MycroftMessageBus extends Component {
 		return (
 			<div className="container">
 				{this.activeSkillComponent()}
-			</div>	
-		)		
+			</div>
+		)
 	}
 }
