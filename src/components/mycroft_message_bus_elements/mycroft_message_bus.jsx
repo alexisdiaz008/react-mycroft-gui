@@ -149,36 +149,33 @@ export default class MycroftMessageBus extends Component {
 		};
 	}
 
-	render() {
+	activeSkillComponent() {
 		let active_skill = this.state["mycroft.system.active_skills"];
 		let active_skill_state = this.state[active_skill];
-		let face_state = this.state["face.active"];
 
-		let defaultFace = () => {
+		if (active_skill &&
+				active_skill_state &&
+			 (active_skill_state["component_focus"] >= 1 ||
+				active_skill_state["component_focus"] == 0)
+				) {
 			return (
 				<div className="container">
-					<Face active={face_state} />
+					<Face active={this.state["face.active"]} />
+					<SkillComponent
+						activeSkill={active_skill}
+						skillState={active_skill_state}
+					/>
 				</div>
 			);
-		};
-
-		if (active_skill && active_skill_state) {
-			let active_skill_state_focus = active_skill_state["component_focus"];
-			if (active_skill_state_focus >= 1 || active_skill_state_focus == 0) {
-				return (
-					<div className="container">
-						<Face active={face_state} />
-						<SkillComponent
-							activeSkill={active_skill}
-							skillState={active_skill_state}
-						/>
-					</div>
-				);
-			} else {
-				return defaultFace();
-			}
-		} else {
-			return defaultFace();
 		}
+		return (
+			<div className="container">
+				<Face active={this.state["face.active"]} />
+			</div>
+		);
+	}
+
+	render() {
+		return this.activeSkillComponent()		
 	}
 }
