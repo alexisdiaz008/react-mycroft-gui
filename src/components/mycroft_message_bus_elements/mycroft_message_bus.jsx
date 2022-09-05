@@ -159,23 +159,23 @@ export default class MycroftMessageBus extends Component {
 				active_skill_state["component_focus"] == 0)
 				) {
 			return (
-				<div className="container">
+				<>
 					<Face active={this.state["face.active"]} />
 					<SkillComponent
 						activeSkill={active_skill}
 						skillState={active_skill_state}
 					/>
-				</div>
+				</>
 			);
 		}
-		return (
-			<div className="container">
-				<Face active={this.state["face.active"]} />
-			</div>
-		);
+		return <Face active={this.state["face.active"]} />
 	}
 
 	render() {
-		return this.activeSkillComponent()		
+		return (
+			<div className="container">
+				{this.activeSkillComponent()}
+			</div>	
+		)		
 	}
 }
